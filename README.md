@@ -1,4 +1,4 @@
-## You can see this project running live [here](https://hudson-portfolio.vercel.app/).
+## You can see this project running live [here](https://hudson-portfolio-website.vercel.app/).
 
 This is my potfolio website made to showcase some of my projects. Made with React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS, Framer Motion, React Email & Resend, Vercel hosting.
 
