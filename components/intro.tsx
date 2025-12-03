@@ -9,10 +9,13 @@ import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { useLanguage } from "@/context/language-context";
 import profilePicture from "@/public/profile.jpg";
 
 export default function Intro() {
-  const { ref } = useSectionInView("Home", 0.5);
+  const { t } = useLanguage();
+  const homeSection = t("nav.home");
+  const { ref } = useSectionInView(homeSection, 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
   return (
@@ -63,11 +66,10 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Olá, meu nome é Hudson.</span> Sou um{" "}
-        <span className="font-bold">front-end developer</span> buscando uma
-        primeira oportunidade. Gosto de construir{" "}
-        <span className="italic">sites & apps</span> e o meu foco atualmente é{" "}
-        <span className="underline">React (Next.js)</span>.
+        <span className="font-bold">{t("intro.greeting")}</span> {t("intro.role")}{" "}
+        <span className="font-bold">{t("intro.roleBold")}</span> {t("intro.seeking")} {t("intro.passion")}{" "}
+        <span className="italic">{t("intro.passionItalic")}</span> {t("intro.focus")}{" "}
+        <span className="underline">{t("intro.focusTech")}</span>.
       </motion.h1>
 
       <motion.div
@@ -82,11 +84,11 @@ export default function Intro() {
           href="#contact"
           className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
           onClick={() => {
-            setActiveSection("Contato");
+            setActiveSection(t("nav.contact"));
             setTimeOfLastClick(Date.now());
           }}
         >
-          Entre em contato{" "}
+          {t("intro.contactButton")}{" "}
           <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
         </Link>
 
@@ -95,7 +97,7 @@ export default function Intro() {
           href="/CV_HudsonFerraz.pdf"
           download
         >
-          Download CV{" "}
+          {t("intro.downloadCV")}{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
 

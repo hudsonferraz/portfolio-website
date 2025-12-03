@@ -7,9 +7,12 @@ import { useSectionInView } from "@/lib/hooks";
 import { sendEmail } from "@/actions/sendEmail";
 import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
+import { useLanguage } from "@/context/language-context";
 
 export default function Contact() {
-  const { ref } = useSectionInView("Contato");
+  const { t } = useLanguage();
+  const contactSection = t("nav.contact");
+  const { ref } = useSectionInView(contactSection);
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
@@ -30,10 +33,10 @@ export default function Contact() {
         once: true,
       }}
     >
-      <SectionHeading>Entre em contato</SectionHeading>
+      <SectionHeading>{t("contact.title")}</SectionHeading>
 
       <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Favor me contatar diretamente no email{" "}
+        {t("contact.description")}{" "}
         <a
           className="underline"
           href="mailto:hudsonferrazmoc@gmail.com"
@@ -41,7 +44,7 @@ export default function Contact() {
         >
           hudsonferrazmoc@gmail.com
         </a>{" "}
-        ou através do formulário abaixo.
+        {t("contact.or")}
       </p>
 
       <form
@@ -55,7 +58,7 @@ export default function Contact() {
             return;
           }
 
-          toast.success("Email sent successfully!");
+          toast.success(t("contact.successMessage"));
           formRef.current?.reset();
         }}
       >
@@ -65,13 +68,13 @@ export default function Contact() {
           type="email"
           required
           maxLength={500}
-          placeholder="Seu email"
+          placeholder={t("contact.emailPlaceholder")}
           aria-label="Your email address"
         />
         <textarea
           className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
           name="message"
-          placeholder="Sua mensagem"
+          placeholder={t("contact.messagePlaceholder")}
           required
           maxLength={5000}
           aria-label="Your message"

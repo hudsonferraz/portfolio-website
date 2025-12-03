@@ -4,9 +4,12 @@ import React from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
+import { useLanguage } from "@/context/language-context";
 
 export default function About() {
-  const { ref } = useSectionInView("Sobre Mim");
+  const { t } = useLanguage();
+  const aboutSection = t("nav.about");
+  const { ref } = useSectionInView(aboutSection);
 
   return (
     <motion.section
@@ -17,16 +20,9 @@ export default function About() {
       transition={{ delay: 0.175 }}
       id="about"
     >
-      <SectionHeading>Sobre Mim</SectionHeading>
+      <SectionHeading>{t("about.title")}</SectionHeading>
       <p className="mb-3">
-        Me interessei por programação quando tive contato com bots de um jogo
-        que eu jogava e ingressei na Universidade Federal dos Vales do
-        Jequitinhonha e Mucuri (UFVJM) no curso de Sistemas de Informação.
-        Apesar de não ter finalizado o curso, o meu interesse na área não
-        diminuiu, continuei tentando me aperfeiçoar de forma autodidata e
-        continuo tentando aprender diariamente. Fiz esse site com o intuito de
-        mostrar um pouco do que sei e estou procurando uma primeira oportunidade
-        na área.
+        {t("about.description")}
       </p>
     </motion.section>
   );

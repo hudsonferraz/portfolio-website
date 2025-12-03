@@ -4,8 +4,16 @@ import { useRef } from "react";
 import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLanguage } from "@/context/language-context";
 
-type ProjectProps = (typeof projectsData)[number];
+type ProjectProps = {
+  titleKey?: string;
+  title: string;
+  description: string;
+  tags: readonly string[];
+  imageUrl: any;
+  link: string;
+};
 
 export default function Project({
   title,
@@ -14,6 +22,7 @@ export default function Project({
   imageUrl,
   link,
 }: ProjectProps) {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -75,7 +84,7 @@ export default function Project({
           rel="noreferrer noopener"
           aria-label={`View ${title} project on GitHub`}
         >
-          Veja mais sobre esse projeto clicando aqui.
+          {t("projects.viewProject")}
         </a>
       </div>
     </motion.div>

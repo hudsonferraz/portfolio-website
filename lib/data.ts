@@ -8,25 +8,25 @@ import pokedex from "@/public/pokedex.png";
 import travelApp from "@/public/travel-app.png";
 import carShowcase from "@/public/car-showcase.png";
 
-export const links = [
+export const linkKeys = [
   {
-    name: "Home",
+    key: "home",
     hash: "#home",
   },
   {
-    name: "Sobre Mim",
+    key: "about",
     hash: "#about",
   },
   {
-    name: "Projetos",
+    key: "projects",
     hash: "#projects",
   },
   {
-    name: "Habilidades",
+    key: "skills",
     hash: "#skills",
   },
   {
-    name: "Contato",
+    key: "contact",
     hash: "#contact",
   },
 ] as const;
@@ -60,9 +60,7 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "Taskify",
-    description:
-      "Taskify é um aplicativo de gerenciamento estilo Trello inclusive com uma versão PRO que permite criação ilimitada de boards.",
+    titleKey: "taskify",
     tags: [
       "React",
       "TypeScript",
@@ -76,33 +74,25 @@ export const projectsData = [
     link: "https://github.com/hudsonferraz/taskify",
   },
   {
-    title: "Pokedex",
-    description:
-      "Projeto feito para praticar consumo de APIs utilizando a PokeAPI.",
+    titleKey: "pokedex",
     tags: ["React"],
     imageUrl: pokedex,
     link: "https://github.com/hudsonferraz/pokedex",
   },
   {
-    title: "Car Showcase",
-    description:
-      "Website que busca e filtra carros, feito para praticar uso de mais de uma API.",
+    titleKey: "carShowcase",
     tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
     imageUrl: carShowcase,
     link: "https://github.com/hudsonferraz/car-showcase",
   },
   {
-    title: "Dogs",
-    description:
-      "Uma mídia social para cachorros. Website estilo Instagram com suas funcionalidades básicas.",
+    titleKey: "dogs",
     tags: ["React"],
     imageUrl: dogs,
     link: "https://github.com/hudsonferraz/dogs",
   },
   {
-    title: "Travel App",
-    description:
-      "Landing Page simples feita para praticar TailwindCSS e TypeScript.",
+    titleKey: "travelApp",
     tags: ["React", "TypeScript", "TailwindCSS", "Next.js"],
     imageUrl: travelApp,
     link: "https://github.com/hudsonferraz/hilink-app",
