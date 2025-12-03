@@ -1,8 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import enTranslations from "@/messages/en.json";
-import ptTranslations from "@/messages/pt.json";
+import enTranslations from "@/messages/en";
+import ptTranslations from "@/messages/pt";
 
 type Language = "en" | "pt";
 
