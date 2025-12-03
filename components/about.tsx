@@ -22,7 +22,7 @@ export default function About() {
         Me interessei por programação quando tive contato com bots de um jogo
         que eu jogava e ingressei na Universidade Federal dos Vales do
         Jequitinhonha e Mucuri (UFVJM) no curso de Sistemas de Informação.
-        Apesar de nao ter finalizado o curso o meu interesse na área não
+        Apesar de não ter finalizado o curso, o meu interesse na área não
         diminuiu, continuei tentando me aperfeiçoar de forma autodidata e
         continuo tentando aprender diariamente. Fiz esse site com o intuito de
         mostrar um pouco do que sei e estou procurando uma primeira oportunidade

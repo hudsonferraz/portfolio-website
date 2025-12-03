@@ -2,7 +2,11 @@
 
 import React from "react";
 import { Resend } from "resend";
-import { validateString, getErrorMessage } from "@/lib/utils";
+import {
+  validateString,
+  validateEmail,
+  getErrorMessage,
+} from "@/lib/utils";
 import ContactFormEmail from "@/email/contact-form-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -11,15 +15,27 @@ export const sendEmail = async (formData: FormData) => {
   const senderEmail = formData.get("senderEmail");
   const message = formData.get("message");
 
-  // simple server-side validation
   if (!validateString(senderEmail, 500)) {
     return {
-      error: "Invalid sender email",
+      error: "Email inválido. Por favor, verifique e tente novamente.",
     };
   }
+
+  if (!validateEmail(senderEmail as string)) {
+    return {
+      error: "Formato de email inválido. Por favor, verifique e tente novamente.",
+    };
+  }
+
   if (!validateString(message, 5000)) {
     return {
-      error: "Invalid message",
+      error: "Mensagem inválida. Por favor, verifique e tente novamente.",
+    };
+  }
+
+  if ((message as string).trim().length === 0) {
+    return {
+      error: "A mensagem não pode estar vazia.",
     };
   }
 

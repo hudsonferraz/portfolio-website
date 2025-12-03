@@ -68,7 +68,13 @@ export default function Project({
         />
       </section>
       <div className="mt-1">
-        <a className="font-semibold" href={link} target="_blank">
+        <a
+          className="font-semibold"
+          href={link}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={`View ${title} project on GitHub`}
+        >
           Veja mais sobre esse projeto clicando aqui.
         </a>
       </div>
