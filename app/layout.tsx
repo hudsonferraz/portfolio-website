@@ -3,10 +3,9 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
-import ThemeSwitch from "@/components/theme-switch";
+import FloatingControls from "@/components/floating-controls";
 import ThemeContextProvider from "@/context/theme-context";
 import { LanguageProvider } from "@/context/language-context";
-import LanguageSwitcher from "@/components/language-switcher";
 import HtmlLang from "@/components/html-lang";
 import { Toaster } from "react-hot-toast";
 
@@ -85,8 +84,7 @@ export default function RootLayout({
               <Footer />
 
               <Toaster position="top-right" />
-              <ThemeSwitch />
-              <LanguageSwitcher />
+              <FloatingControls />
             </ActiveSectionContextProvider>
           </LanguageProvider>
         </ThemeContextProvider>
