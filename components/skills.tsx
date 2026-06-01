@@ -2,7 +2,7 @@
 
 import React from "react";
 import SectionHeading from "./section-heading";
-import { skillsData } from "@/lib/data";
+import { skillCategoryKeys } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/language-context";
@@ -10,7 +10,7 @@ import { useLanguage } from "@/context/language-context";
 const fadeInAnimationVariants = {
   initial: {
     opacity: 0,
-    y: 100,
+    y: 50,
   },
   animate: (index: number) => ({
     opacity: 1,
@@ -33,23 +33,40 @@ export default function Skills() {
       className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
     >
       <SectionHeading>{t("skills.title")}</SectionHeading>
-      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
-        {skillsData.map((skill, index) => (
-          <motion.li
-            className="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80"
-            key={index}
+      <p className="text-gray-700 -mt-6 mb-10 dark:text-white/80">
+        {t("skills.subtitle")}
+      </p>
+
+      <div className="space-y-8 text-left">
+        {skillCategoryKeys.map((categoryKey, categoryIndex) => (
+          <motion.div
+            key={categoryKey}
             variants={fadeInAnimationVariants}
             initial="initial"
             whileInView="animate"
-            viewport={{
-              once: true,
-            }}
-            custom={index}
+            viewport={{ once: true }}
+            custom={categoryIndex}
           >
-            {skill}
-          </motion.li>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-3 dark:text-white/50">
+              {t(`skills.categories.${categoryKey}`)}
+            </h3>
+            <ul className="flex flex-wrap gap-2">
+              {(
+                t(`skills.items.${categoryKey}`) as string
+              )
+                .split(",")
+                .map((skill, index) => (
+                  <li
+                    key={index}
+                    className="bg-white borderBlack rounded-xl px-4 py-2 text-base text-gray-800 dark:bg-white/10 dark:text-white/80"
+                  >
+                    {skill.trim()}
+                  </li>
+                ))}
+            </ul>
+          </motion.div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

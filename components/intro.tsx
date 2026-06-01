@@ -67,7 +67,7 @@ export default function Intro() {
         animate={{ opacity: 1, y: 0 }}
       >
         <span className="font-bold">{t("intro.greeting")}</span> {t("intro.role")}{" "}
-        <span className="font-bold">{t("intro.roleBold")}</span> {t("intro.seeking")} {t("intro.passion")}{" "}
+        <span className="font-bold">{t("intro.roleBold")}</span> {t("intro.passion")}{" "}
         <span className="italic">{t("intro.passionItalic")}</span> {t("intro.focus")}{" "}
         <span className="underline">{t("intro.focusTech")}</span>.
       </motion.h1>

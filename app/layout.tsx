@@ -13,17 +13,19 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Hudson | Personal Portfolio",
+  title: "Hudson Ferraz | Full-Stack Developer",
   description:
-    "I'm a beginner front-end developer with yet no experience but a lot of passion and looking to improve my skills daily",
+    "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
   keywords: [
     "Hudson Ferraz",
-    "Front-end Developer",
-    "React Developer",
-    "Next.js Developer",
+    "Full-Stack Developer",
     "TypeScript",
+    "Python",
+    "High-Frequency Trading",
+    "Market Making",
+    "React",
+    "Next.js",
     "Portfolio",
-    "Web Developer",
   ],
   authors: [{ name: "Hudson Ferraz" }],
   creator: "Hudson Ferraz",
@@ -31,16 +33,16 @@ export const metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://hudson-portfolio-website.vercel.app",
-    title: "Hudson | Personal Portfolio",
+    title: "Hudson Ferraz | Full-Stack Developer",
     description:
-      "I'm a beginner front-end developer with yet no experience but a lot of passion and looking to improve my skills daily",
+      "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
     siteName: "Hudson Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hudson | Personal Portfolio",
+    title: "Hudson Ferraz | Full-Stack Developer",
     description:
-      "I'm a beginner front-end developer with yet no experience but a lot of passion and looking to improve my skills daily",
+      "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
   },
   robots: {
     index: true,

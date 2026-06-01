@@ -2,6 +2,7 @@ export default {
   nav: {
     home: "Home",
     about: "About Me",
+    experience: "Experience",
     projects: "Projects",
     skills: "Skills",
     contact: "Contact",
@@ -9,26 +10,86 @@ export default {
   intro: {
     greeting: "Hello, my name is Hudson.",
     role: "I'm a",
-    roleBold: "front-end developer",
-    seeking: "seeking my first opportunity.",
-    passion: "I enjoy building",
-    passionItalic: "sites & apps",
-    focus: "and my current focus is",
-    focusTech: "React (Next.js)",
+    roleBold: "full-stack developer",
+    passion: "specializing in",
+    passionItalic: "high-frequency trading & market-making",
+    focus: "with a focus on",
+    focusTech: "TypeScript, Python & production systems",
     contactButton: "Contact me",
     downloadCV: "Download CV",
   },
   about: {
     title: "About Me",
     description:
-      "I became interested in programming when I came into contact with bots from a game I played and enrolled at the Federal University of Jequitinhonha and Mucuri Valleys (UFVJM) in the Information Systems course. Although I didn't complete the course, my interest in the area didn't diminish. I continued trying to improve myself self-taught and I continue trying to learn daily. I made this site to show a little of what I know and I'm looking for my first opportunity in the area.",
+      "I design and operate exchange integrations (CLOB and AMM), strategy engines, and production infrastructure for long-running trading bots. I care about reliable automation, clear observability, and maintainable code that supports both research (backtesting) and live trading.",
+    description2:
+      "I studied Information Systems at UFVJM (Diamantina, MG). I got into programming through game bots and kept learning on my own. Today I work at Funttastic on HFT and market-making platforms—building exchange connectors, liquidity engines, and distributed infrastructure across multiple blockchains.",
+  },
+  experience: {
+    title: "Experience",
+    highlightsTitle: "Technical highlights",
+    roles: {
+      funttastic: {
+        title: "Full-Stack Developer",
+        company: "Funttastic · Remote",
+        date: "2024 – Present",
+        description:
+          "I contribute to high-frequency trading and market-making platforms—integrating exchanges, liquidity provisioning algorithms, and distributed infrastructure across multiple blockchains.",
+      },
+      education: {
+        title: "Information Systems",
+        company: "UFVJM · Diamantina, MG",
+        date: "2014 – Incomplete",
+        description:
+          "Coursework in software engineering and systems design. Continued learning through self-study and production work in trading systems and full-stack development.",
+      },
+    },
+    highlights: {
+      hummingbot: {
+        title: "Hummingbot open-source connectors",
+        description:
+          "Built custom exchange connectors for CLOB and AMM venues, extending Hummingbot for distributed trading systems and reusable integration patterns.",
+        tags: "Python, CLOB, AMM, Hummingbot",
+      },
+      rujira: {
+        title: "Rujira blockchain HFT bot",
+        description:
+          "Architected a full HFT bot for Rujira Trade (FIN) using GraphQL and the Cosmos SDK, with adaptive spread/skew engines and real-time P&L monitoring.",
+        tags: "TypeScript, GraphQL, Cosmos SDK, HFT",
+      },
+      barracuda: {
+        title: "Barracuda HFT platform",
+        description:
+          "Developed a TypeScript/Bun system for automated market making and liquidity management, with adapters for Raydium, Rujira, and CCXT-based venues.",
+        tags: "TypeScript, Bun, CCXT, Raydium",
+      },
+    },
   },
   projects: {
     title: "My Projects",
     viewProject: "Click here to learn more about this project.",
   },
   skills: {
-    title: "My Skills",
+    title: "Skills",
+    subtitle:
+      "Technologies and domains I use to build trading systems and production software.",
+    categories: {
+      languages: "Languages",
+      trading: "Trading & automation",
+      blockchain: "Blockchain & DeFi",
+      frontend: "Frontend",
+      infrastructure: "Infrastructure & tooling",
+      data: "Data & persistence",
+    },
+    items: {
+      languages: "TypeScript, Python, JavaScript",
+      trading:
+        "HFT, Market Making, Backtesting, Strategy Engines, CCXT, Hummingbot",
+      blockchain: "Cosmos SDK, GraphQL, CLOB, AMM, Raydium",
+      frontend: "React, Next.js, Tailwind CSS, Framer Motion",
+      infrastructure: "Git, Docker, Bun, Node.js, Observability, Linux",
+      data: "MySQL, MongoDB, Prisma, REST APIs",
+    },
   },
   contact: {
     title: "Contact me",
