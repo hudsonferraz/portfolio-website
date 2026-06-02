@@ -9,10 +9,17 @@ import { LanguageProvider } from "@/context/language-context";
 import HtmlLang from "@/components/html-lang";
 import SkipLink from "@/components/skip-link";
 import { Toaster } from "react-hot-toast";
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+const siteUrl = "https://hudson-portfolio-website.vercel.app";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   title: "Hudson Ferraz | Full-Stack Developer",
   description:
     "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
@@ -32,7 +39,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://hudson-portfolio-website.vercel.app",
+    url: "/",
     title: "Hudson Ferraz | Full-Stack Developer",
     description:
       "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
