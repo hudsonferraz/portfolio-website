@@ -10,11 +10,13 @@ import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { useLanguage } from "@/context/language-context";
+import { getCvForLanguage } from "@/lib/cv";
 import { motionTransition, useReducedMotion } from "@/lib/motion";
 import profilePicture from "@/public/profile.jpg";
 
 export default function Intro() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const cv = getCvForLanguage(language);
   const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
@@ -100,8 +102,9 @@ export default function Intro() {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/CV_HudsonFerraz.pdf"
-          download
+          href={cv.href}
+          download={cv.downloadFileName}
+          aria-label={`${t("intro.downloadCV")} (${language === "pt" ? "Português" : "English"})`}
         >
           {t("intro.downloadCV")}{" "}
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
