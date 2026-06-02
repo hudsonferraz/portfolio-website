@@ -6,6 +6,8 @@ import { validateString, validateEmail } from "@/lib/utils";
 import type { ContactErrorCode } from "@/lib/contact-errors";
 import { CONTACT_HONEYPOT_FIELD_NAME } from "@/lib/contact-honeypot";
 import { getResendApiKey } from "@/lib/env";
+import { isContactRateLimitExceeded } from "@/lib/contact-rate-limit";
+import { getRequestIpAddress } from "@/lib/request-ip";
 import ContactFormEmail from "@/email/contact-form-email";
 
 const resend = new Resend(getResendApiKey());
@@ -38,6 +40,11 @@ export const sendEmail = async (formData: FormData): Promise<SendEmailResult> =>
 
   if ((message as string).trim().length === 0) {
     return { error: "emptyMessage" };
+  }
+
+  const requestIpAddress = getRequestIpAddress();
+  if (await isContactRateLimitExceeded(requestIpAddress)) {
+    return { error: "rateLimited" };
   }
 
   try {

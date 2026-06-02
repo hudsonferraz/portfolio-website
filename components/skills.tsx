@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/language-context";
 import { getStaggerRevealVariants, useReducedMotion } from "@/lib/motion";
 
 export default function Skills() {
-  const { t } = useLanguage();
+  const { t, tList } = useLanguage();
   const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("skills");
   const fadeInAnimationVariants = getStaggerRevealVariants(reducedMotion);
@@ -38,16 +38,14 @@ export default function Skills() {
               {t(`skills.categories.${categoryKey}`)}
             </h3>
             <ul className="flex flex-wrap gap-2">
-              {(t(`skills.items.${categoryKey}`) as string)
-                .split(",")
-                .map((skill, index) => (
-                  <li
-                    key={index}
-                    className="bg-white borderBlack rounded-xl px-4 py-2 text-base text-gray-800 dark:bg-white/10 dark:text-white/80"
-                  >
-                    {skill.trim()}
-                  </li>
-                ))}
+              {tList(`skills.items.${categoryKey}`).map((skill) => (
+                <li
+                  key={skill}
+                  className="bg-white borderBlack rounded-xl px-4 py-2 text-base text-gray-800 dark:bg-white/10 dark:text-white/80"
+                >
+                  {skill}
+                </li>
+              ))}
             </ul>
           </motion.div>
         ))}

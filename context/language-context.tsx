@@ -1,23 +1,16 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import enTranslations from "@/messages/en";
-import ptTranslations from "@/messages/pt";
-
-type Language = "en" | "pt";
+import { resolveTranslation, type Language } from "@/lib/i18n";
 
 type LanguageContextType = {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  tList: (key: string) => readonly string[];
 };
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
-
-const translations = {
-  en: enTranslations,
-  pt: ptTranslations,
-};
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("pt");
@@ -47,22 +40,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const t = (key: string): string => {
-    const keys = key.split(".");
-    let value: any = translations[language];
-
-    for (const k of keys) {
-      if (value && typeof value === "object" && k in value) {
-        value = value[k];
-      } else {
-        return key;
-      }
-    }
-
+    const value = resolveTranslation(language, key);
     return typeof value === "string" ? value : key;
   };
 
+  const tList = (key: string): readonly string[] => {
+    const value = resolveTranslation(language, key);
+    return Array.isArray(value) ? value : [];
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, tList }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -75,4 +63,3 @@ export function useLanguage() {
   }
   return context;
 }
-

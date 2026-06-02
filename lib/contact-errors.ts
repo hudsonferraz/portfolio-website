@@ -3,6 +3,7 @@ export const contactErrorCodes = [
   "invalidEmailFormat",
   "invalidMessage",
   "emptyMessage",
+  "rateLimited",
   "sendFailed",
 ] as const;
 

@@ -58,19 +58,19 @@ export default {
         title: "Hummingbot open-source connectors",
         description:
           "Built custom exchange connectors for CLOB and AMM venues, extending Hummingbot for distributed trading systems and reusable integration patterns.",
-        tags: "Python, CLOB, AMM, Hummingbot",
+        tags: ["Python", "CLOB", "AMM", "Hummingbot"],
       },
       rujira: {
         title: "Rujira blockchain HFT bot",
         description:
           "Architected a full HFT bot for Rujira Trade (FIN) using GraphQL and the Cosmos SDK, with adaptive spread/skew engines and real-time P&L monitoring.",
-        tags: "TypeScript, GraphQL, Cosmos SDK, HFT",
+        tags: ["TypeScript", "GraphQL", "Cosmos SDK", "HFT"],
       },
       barracuda: {
         title: "Barracuda HFT platform",
         description:
           "Developed a TypeScript/Bun system for automated market making and liquidity management, with adapters for Raydium, Rujira, and CCXT-based venues.",
-        tags: "TypeScript, Bun, CCXT, Raydium",
+        tags: ["TypeScript", "Bun", "CCXT", "Raydium"],
       },
     },
   },
@@ -91,13 +91,26 @@ export default {
       data: "Data & persistence",
     },
     items: {
-      languages: "TypeScript, Python, JavaScript",
-      trading:
-        "HFT, Market Making, Backtesting, Strategy Engines, CCXT, Hummingbot",
-      blockchain: "Cosmos SDK, GraphQL, CLOB, AMM, Raydium",
-      frontend: "React, Next.js, Tailwind CSS, Framer Motion",
-      infrastructure: "Git, Docker, Bun, Node.js, Observability, Linux",
-      data: "MySQL, MongoDB, Prisma, REST APIs",
+      languages: ["TypeScript", "Python", "JavaScript"],
+      trading: [
+        "HFT",
+        "Market Making",
+        "Backtesting",
+        "Strategy Engines",
+        "CCXT",
+        "Hummingbot",
+      ],
+      blockchain: ["Cosmos SDK", "GraphQL", "CLOB", "AMM", "Raydium"],
+      frontend: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      infrastructure: [
+        "Git",
+        "Docker",
+        "Bun",
+        "Node.js",
+        "Observability",
+        "Linux",
+      ],
+      data: ["MySQL", "MongoDB", "Prisma", "REST APIs"],
     },
   },
   contact: {
@@ -113,6 +126,8 @@ export default {
       invalidEmailFormat: "Invalid email format. Please check and try again.",
       invalidMessage: "Invalid message. Please check and try again.",
       emptyMessage: "Message cannot be empty.",
+      rateLimited:
+        "Too many messages sent. Please wait a few minutes and try again.",
       sendFailed: "Failed to send email. Please try again later.",
     },
   },

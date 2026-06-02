@@ -15,7 +15,7 @@ function ExperienceHighlights({
   reducedMotion: boolean;
   animationOffset: number;
 }) {
-  const { t } = useLanguage();
+  const { t, tList } = useLanguage();
 
   return (
     <div className="mt-6 border-t border-black/10 pt-6 dark:border-white/10">
@@ -39,16 +39,14 @@ function ExperienceHighlights({
               {t(`experience.highlights.${highlightKey}.description`)}
             </p>
             <ul className="mt-4 flex flex-wrap gap-2">
-              {(t(`experience.highlights.${highlightKey}.tags`) as string)
-                .split(",")
-                .map((tag) => (
-                  <li
-                    key={tag}
-                    className="rounded-full bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white dark:bg-white/15"
-                  >
-                    {tag.trim()}
-                  </li>
-                ))}
+              {tList(`experience.highlights.${highlightKey}.tags`).map((tag) => (
+                <li
+                  key={tag}
+                  className="rounded-full bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white dark:bg-white/15"
+                >
+                  {tag}
+                </li>
+              ))}
             </ul>
           </motion.div>
         ))}
@@ -58,7 +56,7 @@ function ExperienceHighlights({
 }
 
 export default function Experience() {
-  const { t } = useLanguage();
+  const { t, tList } = useLanguage();
   const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("experience");
 

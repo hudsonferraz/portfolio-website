@@ -58,19 +58,19 @@ export default {
         title: "Conectores open-source Hummingbot",
         description:
           "Desenvolvi conectores customizados para venues CLOB e AMM, estendendo o Hummingbot para sistemas de trading distribuídos e padrões reutilizáveis de integração.",
-        tags: "Python, CLOB, AMM, Hummingbot",
+        tags: ["Python", "CLOB", "AMM", "Hummingbot"],
       },
       rujira: {
         title: "Bot HFT na blockchain Rujira",
         description:
           "Arquitetei um bot HFT completo para Rujira Trade (FIN) com GraphQL e Cosmos SDK, incluindo motores adaptativos de spread/skew e monitoramento de P&L em tempo real.",
-        tags: "TypeScript, GraphQL, Cosmos SDK, HFT",
+        tags: ["TypeScript", "GraphQL", "Cosmos SDK", "HFT"],
       },
       barracuda: {
         title: "Plataforma HFT Barracuda",
         description:
           "Desenvolvi um sistema em TypeScript/Bun para market making automatizado e gestão de liquidez, com adaptadores para Raydium, Rujira e venues via CCXT.",
-        tags: "TypeScript, Bun, CCXT, Raydium",
+        tags: ["TypeScript", "Bun", "CCXT", "Raydium"],
       },
     },
   },
@@ -91,13 +91,26 @@ export default {
       data: "Dados e persistência",
     },
     items: {
-      languages: "TypeScript, Python, JavaScript",
-      trading:
-        "HFT, Market Making, Backtesting, Motores de Estratégia, CCXT, Hummingbot",
-      blockchain: "Cosmos SDK, GraphQL, CLOB, AMM, Raydium",
-      frontend: "React, Next.js, Tailwind CSS, Framer Motion",
-      infrastructure: "Git, Docker, Bun, Node.js, Observabilidade, Linux",
-      data: "MySQL, MongoDB, Prisma, REST APIs",
+      languages: ["TypeScript", "Python", "JavaScript"],
+      trading: [
+        "HFT",
+        "Market Making",
+        "Backtesting",
+        "Motores de Estratégia",
+        "CCXT",
+        "Hummingbot",
+      ],
+      blockchain: ["Cosmos SDK", "GraphQL", "CLOB", "AMM", "Raydium"],
+      frontend: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      infrastructure: [
+        "Git",
+        "Docker",
+        "Bun",
+        "Node.js",
+        "Observabilidade",
+        "Linux",
+      ],
+      data: ["MySQL", "MongoDB", "Prisma", "REST APIs"],
     },
   },
   contact: {
@@ -114,6 +127,8 @@ export default {
         "Formato de email inválido. Por favor, verifique e tente novamente.",
       invalidMessage: "Mensagem inválida. Por favor, verifique e tente novamente.",
       emptyMessage: "A mensagem não pode estar vazia.",
+      rateLimited:
+        "Muitas mensagens enviadas. Aguarde alguns minutos e tente novamente.",
       sendFailed: "Falha ao enviar o email. Por favor, tente novamente mais tarde.",
     },
   },

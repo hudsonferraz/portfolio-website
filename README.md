@@ -9,8 +9,8 @@ Personal portfolio showcasing experience in full-stack development, high-frequen
 - English and Portuguese (language switcher with persisted preference)
 - Dark / light theme
 - Sections: intro, about, experience, skills, projects, contact
-- Contact form with honeypot spam filter and Resend email delivery
-- SEO: metadata, Open Graph image, JSON-LD, sitemap, custom 404
+- Contact form with honeypot spam filter, optional Upstash rate limiting, and Resend email delivery
+- SEO: metadata, Open Graph image, JSON-LD, sitemap, custom 404, generated favicon
 
 ## Tech stack
 
@@ -51,6 +51,17 @@ The server validates `RESEND_API_KEY` at startup. If it is missing, `npm run dev
 #### Custom sender domain (optional)
 
 For production, verify your domain in Resend and update the `from` address in `actions/sendEmail.ts` (default is `onboarding@resend.dev` for testing).
+
+#### Contact rate limiting (optional)
+
+To limit contact form submissions (3 per 10 minutes per IP), create a free [Upstash Redis](https://console.upstash.com/) database and set:
+
+```env
+UPSTASH_REDIS_REST_URL=
+UPSTASH_REDIS_REST_TOKEN=
+```
+
+If these variables are not set, the form works without rate limiting (useful for local development).
 
 ### Run locally
 
