@@ -32,7 +32,6 @@ export default {
   },
   experience: {
     title: "Experiência",
-    highlightsTitle: "Destaques técnicos",
     roles: {
       funttastic: {
         title: "Desenvolvedor Full-Stack",
@@ -40,6 +39,7 @@ export default {
         date: "2024 – Atual",
         description:
           "Atuo em plataformas de high-frequency trading e market-making—integrando exchanges, algoritmos de provisionamento de liquidez e infraestrutura distribuída em múltiplas blockchains.",
+        highlightsTitle: "Trabalho técnico em destaque",
       },
       education: {
         title: "Sistemas de Informação",
@@ -120,9 +120,12 @@ export default {
     backHome: "Voltar ao início",
   },
   footer: {
+    tagline:
+      "Desenvolvedor full-stack em sistemas de trading, integrações com exchanges e infraestrutura em produção.",
+    location: "Brasil · Remoto",
     copyright: "Todos os direitos reservados.",
-    about: "Sobre esse website:",
-    tech: "feito com React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS, Framer Motion, React Email & Resend, Vercel hosting.",
+    stackNote:
+      "Feito com Next.js, TypeScript, Tailwind CSS, Framer Motion e publicado na Vercel.",
   },
   projectsData: {
     taskify: {

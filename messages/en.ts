@@ -32,7 +32,6 @@ export default {
   },
   experience: {
     title: "Experience",
-    highlightsTitle: "Technical highlights",
     roles: {
       funttastic: {
         title: "Full-Stack Developer",
@@ -40,6 +39,7 @@ export default {
         date: "2024 – Present",
         description:
           "I contribute to high-frequency trading and market-making platforms—integrating exchanges, liquidity provisioning algorithms, and distributed infrastructure across multiple blockchains.",
+        highlightsTitle: "Selected technical work",
       },
       education: {
         title: "Information Systems",
@@ -119,9 +119,12 @@ export default {
     backHome: "Back to home",
   },
   footer: {
+    tagline:
+      "Full-stack developer building trading systems, exchange integrations, and production infrastructure.",
+    location: "Brazil · Remote",
     copyright: "All rights reserved.",
-    about: "About this website:",
-    tech: "made with React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS, Framer Motion, React Email & Resend, Vercel hosting.",
+    stackNote:
+      "Built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and deployed on Vercel.",
   },
   projectsData: {
     taskify: {
