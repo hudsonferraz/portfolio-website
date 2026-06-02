@@ -23,7 +23,10 @@ export default function About() {
     >
       <SectionHeading>{t("about.title")}</SectionHeading>
       <p className="mb-3">{t("about.description")}</p>
-      <p>{t("about.description2")}</p>
+      <p className="mb-3">{t("about.description2")}</p>
+      <p className="text-sm text-gray-600 dark:text-white/60">
+        {t("about.englishNote")}
+      </p>
     </motion.section>
   );
 }

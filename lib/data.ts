@@ -18,12 +18,12 @@ export const linkKeys = [
     hash: "#experience",
   },
   {
-    key: "projects",
-    hash: "#projects",
-  },
-  {
     key: "skills",
     hash: "#skills",
+  },
+  {
+    key: "projects",
+    hash: "#projects",
   },
   {
     key: "contact",

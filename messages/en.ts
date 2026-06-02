@@ -29,6 +29,8 @@ export default {
       "I design and operate exchange integrations (CLOB and AMM), strategy engines, and production infrastructure for long-running trading bots. I care about reliable automation, clear observability, and maintainable code that supports both research (backtesting) and live trading.",
     description2:
       "I studied Information Systems at UFVJM (Diamantina, MG). I got into programming through game bots and kept learning on my own. Today I work at Funttastic on HFT and market-making platforms—building exchange connectors, liquidity engines, and distributed infrastructure across multiple blockchains.",
+    englishNote:
+      "Fluent in English (EF SET C2 Proficient). Comfortable collaborating with international teams in English.",
   },
   experience: {
     title: "Experience",
