@@ -112,6 +112,12 @@ export default {
       sendFailed: "Failed to send email. Please try again later.",
     },
   },
+  notFound: {
+    title: "Page not found",
+    description:
+      "The page you are looking for does not exist or may have been moved.",
+    backHome: "Back to home",
+  },
   footer: {
     copyright: "All rights reserved.",
     about: "About this website:",

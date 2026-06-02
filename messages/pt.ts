@@ -113,6 +113,12 @@ export default {
       sendFailed: "Falha ao enviar o email. Por favor, tente novamente mais tarde.",
     },
   },
+  notFound: {
+    title: "Página não encontrada",
+    description:
+      "A página que você procura não existe ou pode ter sido movida.",
+    backHome: "Voltar ao início",
+  },
   footer: {
     copyright: "Todos os direitos reservados.",
     about: "Sobre esse website:",

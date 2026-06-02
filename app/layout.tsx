@@ -8,23 +8,27 @@ import ThemeContextProvider from "@/context/theme-context";
 import { LanguageProvider } from "@/context/language-context";
 import HtmlLang from "@/components/html-lang";
 import SkipLink from "@/components/skip-link";
+import PersonJsonLd from "@/components/person-json-ld";
 import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
+import {
+  PERSON_DESCRIPTION,
+  PERSON_NAME,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = "https://hudson-portfolio-website.vercel.app";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
-  title: "Hudson Ferraz | Full-Stack Developer",
-  description:
-    "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
+  title: `${PERSON_NAME} | Full-Stack Developer`,
+  description: PERSON_DESCRIPTION,
   keywords: [
-    "Hudson Ferraz",
+    PERSON_NAME,
     "Full-Stack Developer",
     "TypeScript",
     "Python",
@@ -34,22 +38,20 @@ export const metadata: Metadata = {
     "Next.js",
     "Portfolio",
   ],
-  authors: [{ name: "Hudson Ferraz" }],
-  creator: "Hudson Ferraz",
+  authors: [{ name: PERSON_NAME }],
+  creator: PERSON_NAME,
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: "/",
-    title: "Hudson Ferraz | Full-Stack Developer",
-    description:
-      "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
-    siteName: "Hudson Portfolio",
+    title: `${PERSON_NAME} | Full-Stack Developer`,
+    description: PERSON_DESCRIPTION,
+    siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hudson Ferraz | Full-Stack Developer",
-    description:
-      "Full-stack developer specializing in high-frequency trading and market-making. TypeScript, Python, exchange integrations, and production trading infrastructure.",
+    title: `${PERSON_NAME} | Full-Stack Developer`,
+    description: PERSON_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -74,6 +76,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
       >
+        <PersonJsonLd />
         <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
         <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
 
