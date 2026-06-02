@@ -1,10 +1,28 @@
-## You can see this project running live [here](https://hudson-portfolio-website.vercel.app/).
+# Hudson Ferraz — Portfolio
 
-Personal portfolio built with Next.js (App Router & Server Actions), TypeScript, Tailwind CSS, Framer Motion, React Email & Resend, deployed on Vercel. Supports English and Portuguese.
+Live site: [hudson-portfolio-website.vercel.app](https://hudson-portfolio-website.vercel.app/)
 
-## Installing
+Personal portfolio showcasing experience in full-stack development, high-frequency trading, and market-making. Built with Next.js 14 (App Router, Server Actions), TypeScript, Tailwind CSS, Framer Motion, React Email, and Resend. Deployed on Vercel.
 
-Clone the repository and install dependencies:
+## Features
+
+- English and Portuguese (language switcher with persisted preference)
+- Dark / light theme
+- Sections: intro, about, experience, skills, projects, contact
+- Contact form with honeypot spam filter and Resend email delivery
+- SEO: metadata, Open Graph image, JSON-LD, sitemap, custom 404
+
+## Tech stack
+
+- **Framework:** Next.js 14, React 18
+- **Styling:** Tailwind CSS
+- **Motion:** Framer Motion (respects `prefers-reduced-motion`)
+- **Email:** React Email, Resend
+- **Images:** `next/image` with `sharp` for production optimization
+
+## Getting started
+
+### Install
 
 ```bash
 git clone https://github.com/hudsonferraz/portfolio-website.git
@@ -12,12 +30,11 @@ cd portfolio-website
 npm install
 ```
 
-## Environment variables
+### Environment variables
 
-The contact form sends email through [Resend](https://resend.com). You need an API key:
+The contact form uses [Resend](https://resend.com). Set `RESEND_API_KEY` locally and on Vercel.
 
-1. Create a [Resend](https://resend.com) account and generate an API key.
-2. Copy `.env.example` to `.env.local` and set your key:
+**Local development** — copy the example file and add your key (use `.env.local` or `.env`, both are gitignored):
 
 ```bash
 cp .env.example .env.local
@@ -27,31 +44,39 @@ cp .env.example .env.local
 RESEND_API_KEY=re_your_api_key_here
 ```
 
-3. On Vercel, add `RESEND_API_KEY` under **Project → Settings → Environment Variables** for Production (and Preview if you test the form there).
+**Vercel** — add `RESEND_API_KEY` under **Project → Settings → Environment Variables** (Production and Preview if you test the form there).
 
-The app validates `RESEND_API_KEY` when the Node.js server starts. If it is missing, the dev server will fail with a clear error.
+The server validates `RESEND_API_KEY` at startup. If it is missing, `npm run dev` will fail with a clear error.
 
-### Sending from your own domain (production)
+#### Custom sender domain (optional)
 
-By default, emails use Resend’s `onboarding@resend.dev` sender (fine for testing). For production:
+For production, verify your domain in Resend and update the `from` address in `actions/sendEmail.ts` (default is `onboarding@resend.dev` for testing).
 
-1. Add and verify your domain in the Resend dashboard.
-2. Update the `from` address in `actions/sendEmail.ts` to an address on that domain (for example `Contact Form <contact@yourdomain.com>`).
-
-## Getting Started
-
-Run the development server:
+### Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
+
+### Build
+
+```bash
+npm run build
+npm start
+```
+
+## Project structure
+
+| Path | Purpose |
+|------|---------|
+| `app/` | Routes, layout, metadata, sitemap |
+| `components/` | UI sections and shared components |
+| `messages/` | EN / PT translation files |
+| `actions/` | Server actions (contact email) |
+| `lib/` | Data, hooks, site config, utilities |
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](LICENSE.txt)
