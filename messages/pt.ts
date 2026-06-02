@@ -1,4 +1,7 @@
 export default {
+  accessibility: {
+    skipToContent: "Pular para o conteúdo principal",
+  },
   nav: {
     home: "Home",
     about: "Sobre Mim",
