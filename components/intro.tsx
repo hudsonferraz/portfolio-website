@@ -14,8 +14,7 @@ import profilePicture from "@/public/profile.jpg";
 
 export default function Intro() {
   const { t } = useLanguage();
-  const homeSection = t("nav.home");
-  const { ref } = useSectionInView(homeSection, 0.5);
+  const { ref } = useSectionInView("home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
   return (
@@ -84,7 +83,7 @@ export default function Intro() {
           href="#contact"
           className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
           onClick={() => {
-            setActiveSection(t("nav.contact"));
+            setActiveSection("contact");
             setTimeOfLastClick(Date.now());
           }}
         >

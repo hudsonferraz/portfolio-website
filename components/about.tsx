@@ -8,8 +8,7 @@ import { useLanguage } from "@/context/language-context";
 
 export default function About() {
   const { t } = useLanguage();
-  const aboutSection = t("nav.about");
-  const { ref } = useSectionInView(aboutSection);
+  const { ref } = useSectionInView("about");
 
   return (
     <motion.section

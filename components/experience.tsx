@@ -9,8 +9,7 @@ import { experienceHighlightKeys, experienceRoleKeys } from "@/lib/data";
 
 export default function Experience() {
   const { t } = useLanguage();
-  const experienceSection = t("nav.experience");
-  const { ref } = useSectionInView(experienceSection);
+  const { ref } = useSectionInView("experience");
 
   return (
     <section

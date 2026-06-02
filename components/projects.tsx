@@ -9,8 +9,7 @@ import { useLanguage } from "@/context/language-context";
 
 export default function Projects() {
   const { t } = useLanguage();
-  const projectsSection = t("nav.projects");
-  const { ref } = useSectionInView(projectsSection, 0.5);
+  const { ref } = useSectionInView("projects", 0.5);
 
   return (
     <section ref={ref} id="projects" className="scroll-mt-28 mb-28">

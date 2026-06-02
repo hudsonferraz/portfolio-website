@@ -37,19 +37,19 @@ export default function Header() {
                     "flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:rounded-full dark:focus:ring-gray-300",
                     {
                       "text-gray-950 dark:text-gray-200":
-                        activeSection === linkName,
+                        activeSection === link.key,
                     }
                   )}
                   href={link.hash}
                   onClick={() => {
-                    setActiveSection(linkName);
+                    setActiveSection(link.key);
                     setTimeOfLastClick(Date.now());
                   }}
                   aria-label={`Navigate to ${linkName} section`}
                 >
                   {linkName}
 
-                  {activeSection === linkName && (
+                  {activeSection === link.key && (
                     <motion.span
                       className="bg-gray-100 rounded-full absolute inset-0 -z-10 dark:bg-gray-800"
                       layoutId="activeSection"

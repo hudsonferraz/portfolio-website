@@ -11,8 +11,7 @@ import { useLanguage } from "@/context/language-context";
 
 export default function Contact() {
   const { t } = useLanguage();
-  const contactSection = t("nav.contact");
-  const { ref } = useSectionInView(contactSection);
+  const { ref } = useSectionInView("contact");
   const formRef = useRef<HTMLFormElement>(null);
 
   return (
