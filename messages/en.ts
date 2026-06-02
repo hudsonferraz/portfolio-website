@@ -1,6 +1,8 @@
 export default {
   accessibility: {
     skipToContent: "Skip to main content",
+    switchToDark: "Switch to dark mode",
+    switchToLight: "Switch to light mode",
   },
   nav: {
     home: "Home",
