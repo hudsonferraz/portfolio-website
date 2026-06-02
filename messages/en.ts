@@ -102,7 +102,13 @@ export default {
     messagePlaceholder: "Your message",
     sendButton: "Send",
     successMessage: "Email sent successfully!",
-    errorMessage: "Failed to send email. Please try again.",
+    errors: {
+      invalidEmail: "Invalid email. Please check and try again.",
+      invalidEmailFormat: "Invalid email format. Please check and try again.",
+      invalidMessage: "Invalid message. Please check and try again.",
+      emptyMessage: "Message cannot be empty.",
+      sendFailed: "Failed to send email. Please try again later.",
+    },
   },
   footer: {
     copyright: "All rights reserved.",

@@ -8,6 +8,7 @@ import { sendEmail } from "@/actions/sendEmail";
 import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/context/language-context";
+import { isContactErrorCode } from "@/lib/contact-errors";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -50,10 +51,13 @@ export default function Contact() {
         ref={formRef}
         className="mt-10 flex flex-col dark:text-black"
         action={async (formData) => {
-          const { data, error } = await sendEmail(formData);
+          const result = await sendEmail(formData);
 
-          if (error) {
-            toast.error(error);
+          if ("error" in result) {
+            const errorKey = isContactErrorCode(result.error)
+              ? `contact.errors.${result.error}`
+              : "contact.errors.sendFailed";
+            toast.error(t(errorKey));
             return;
           }
 

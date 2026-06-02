@@ -2,46 +2,38 @@
 
 import React from "react";
 import { Resend } from "resend";
-import {
-  validateString,
-  validateEmail,
-  getErrorMessage,
-} from "@/lib/utils";
+import { validateString, validateEmail } from "@/lib/utils";
+import type { ContactErrorCode } from "@/lib/contact-errors";
 import ContactFormEmail from "@/email/contact-form-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendEmail = async (formData: FormData) => {
+type SendEmailResult =
+  | { data: unknown }
+  | { error: ContactErrorCode };
+
+export const sendEmail = async (formData: FormData): Promise<SendEmailResult> => {
   const senderEmail = formData.get("senderEmail");
   const message = formData.get("message");
 
   if (!validateString(senderEmail, 500)) {
-    return {
-      error: "Email inválido. Por favor, verifique e tente novamente.",
-    };
+    return { error: "invalidEmail" };
   }
 
   if (!validateEmail(senderEmail as string)) {
-    return {
-      error: "Formato de email inválido. Por favor, verifique e tente novamente.",
-    };
+    return { error: "invalidEmailFormat" };
   }
 
   if (!validateString(message, 5000)) {
-    return {
-      error: "Mensagem inválida. Por favor, verifique e tente novamente.",
-    };
+    return { error: "invalidMessage" };
   }
 
   if ((message as string).trim().length === 0) {
-    return {
-      error: "A mensagem não pode estar vazia.",
-    };
+    return { error: "emptyMessage" };
   }
 
-  let data;
   try {
-    data = await resend.emails.send({
+    const data = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
       to: "hudsonferrazmoc@gmail.com",
       subject: "Message from contact form",
@@ -51,13 +43,9 @@ export const sendEmail = async (formData: FormData) => {
         senderEmail: senderEmail as string,
       }),
     });
-  } catch (error: unknown) {
-    return {
-      error: getErrorMessage(error),
-    };
-  }
 
-  return {
-    data,
-  };
+    return { data };
+  } catch {
+    return { error: "sendFailed" };
+  }
 };
