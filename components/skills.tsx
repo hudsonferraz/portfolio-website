@@ -1,29 +1,17 @@
 "use client";
 
-import React from "react";
 import SectionHeading from "./section-heading";
 import { skillCategoryKeys } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/language-context";
-
-const fadeInAnimationVariants = {
-  initial: {
-    opacity: 0,
-    y: 50,
-  },
-  animate: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.05 * index,
-    },
-  }),
-};
+import { getStaggerRevealVariants, useReducedMotion } from "@/lib/motion";
 
 export default function Skills() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("skills");
+  const fadeInAnimationVariants = getStaggerRevealVariants(reducedMotion);
 
   return (
     <section
@@ -50,9 +38,7 @@ export default function Skills() {
               {t(`skills.categories.${categoryKey}`)}
             </h3>
             <ul className="flex flex-wrap gap-2">
-              {(
-                t(`skills.items.${categoryKey}`) as string
-              )
+              {(t(`skills.items.${categoryKey}`) as string)
                 .split(",")
                 .map((skill, index) => (
                   <li

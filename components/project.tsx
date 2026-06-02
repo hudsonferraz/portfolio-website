@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/context/language-context";
+import { useReducedMotion } from "@/lib/motion";
 
 type ProjectProps = {
   titleKey?: string;
@@ -22,6 +23,7 @@ export default function Project({
   link,
 }: ProjectProps) {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -33,10 +35,11 @@ export default function Project({
   return (
     <motion.div
       ref={ref}
-      style={{
-        scale: scaleProgress,
-        opacity: opacityProgress,
-      }}
+      style={
+        reducedMotion
+          ? { scale: 1, opacity: 1 }
+          : { scale: scaleProgress, opacity: opacityProgress }
+      }
       className="group mb-3 sm:mb-8 last:mb-0"
     >
       <section className="bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20">

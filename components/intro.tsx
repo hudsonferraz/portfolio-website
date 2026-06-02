@@ -10,10 +10,12 @@ import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { useLanguage } from "@/context/language-context";
+import { motionTransition, useReducedMotion } from "@/lib/motion";
 import profilePicture from "@/public/profile.jpg";
 
 export default function Intro() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
@@ -26,12 +28,15 @@ export default function Intro() {
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{
+              opacity: reducedMotion ? 1 : 0,
+              scale: reducedMotion ? 1 : 0,
+            }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{
+            transition={motionTransition(reducedMotion, {
               type: "tween",
               duration: 0.2,
-            }}
+            })}
           >
             <Image
               src={profilePicture}
@@ -46,14 +51,17 @@ export default function Intro() {
 
           <motion.span
             className="absolute bottom-0 right-0 text-4xl"
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{
+              opacity: reducedMotion ? 1 : 0,
+              scale: reducedMotion ? 1 : 0,
+            }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{
+            transition={motionTransition(reducedMotion, {
               type: "spring",
               stiffness: 125,
               delay: 0.1,
               duration: 0.7,
-            }}
+            })}
           >
             👋
           </motion.span>
@@ -62,8 +70,9 @@ export default function Intro() {
 
       <motion.h1
         className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
+        initial={{ opacity: reducedMotion ? 1 : 0, y: reducedMotion ? 0 : 100 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={motionTransition(reducedMotion)}
       >
         <span className="font-bold">{t("intro.greeting")}</span> {t("intro.role")}{" "}
         <span className="font-bold">{t("intro.roleBold")}</span> {t("intro.passion")}{" "}
@@ -73,11 +82,9 @@ export default function Intro() {
 
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
+        initial={{ opacity: reducedMotion ? 1 : 0, y: reducedMotion ? 0 : 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
+        transition={motionTransition(reducedMotion, { delay: 0.1 })}
       >
         <Link
           href="#contact"

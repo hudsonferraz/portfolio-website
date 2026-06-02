@@ -9,9 +9,11 @@ import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/context/language-context";
 import { isContactErrorCode } from "@/lib/contact-errors";
+import { motionTransition, useReducedMotion } from "@/lib/motion";
 
 export default function Contact() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("contact");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -20,18 +22,10 @@ export default function Contact() {
       id="contact"
       ref={ref}
       className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center"
-      initial={{
-        opacity: 0,
-      }}
-      whileInView={{
-        opacity: 1,
-      }}
-      transition={{
-        duration: 1,
-      }}
-      viewport={{
-        once: true,
-      }}
+      initial={{ opacity: reducedMotion ? 1 : 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={motionTransition(reducedMotion, { duration: 1 })}
+      viewport={{ once: true }}
     >
       <SectionHeading>{t("contact.title")}</SectionHeading>
 

@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
 import { useLanguage } from "@/context/language-context";
 import { experienceHighlightKeys, experienceRoleKeys } from "@/lib/data";
+import { getInViewRevealProps, useReducedMotion } from "@/lib/motion";
 
 export default function Experience() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("experience");
 
   return (
@@ -24,10 +26,7 @@ export default function Experience() {
           <motion.article
             key={roleKey}
             className="bg-gray-100 border border-black/5 rounded-2xl p-6 sm:p-8 dark:bg-white/10 dark:border-white/10"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            {...getInViewRevealProps(reducedMotion, index * 0.1)}
           >
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
               <div>
@@ -57,10 +56,7 @@ export default function Experience() {
               <motion.article
                 key={highlightKey}
                 className="bg-white borderBlack rounded-xl p-5 sm:p-6 text-left dark:bg-white/5"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
+                {...getInViewRevealProps(reducedMotion, index * 0.08)}
               >
                 <h4 className="font-semibold text-lg">
                   {t(`experience.highlights.${highlightKey}.title`)}
