@@ -10,6 +10,7 @@ import HtmlLang from "@/components/html-lang";
 import SkipLink from "@/components/skip-link";
 import PersonJsonLd from "@/components/person-json-ld";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import {
   PERSON_DESCRIPTION,
@@ -91,6 +92,7 @@ export default function RootLayout({
 
               <Toaster position="top-right" />
               <FloatingControls />
+              <Analytics />
             </ActiveSectionContextProvider>
           </LanguageProvider>
         </ThemeContextProvider>

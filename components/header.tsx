@@ -1,23 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { linkKeys } from "@/lib/data";
-import Link from "next/link";
-import clsx from "clsx";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { useLanguage } from "@/context/language-context";
-import {
-  layoutSpringTransition,
-  motionTransition,
-  useReducedMotion,
-} from "@/lib/motion";
+import NavLinks from "@/components/nav-links";
+import MobileNav from "@/components/mobile-nav";
+import { motionTransition, useReducedMotion } from "@/lib/motion";
 
 export default function Header() {
-  const { activeSection, setActiveSection, setTimeOfLastClick } =
-    useActiveSectionContext();
-  const { t } = useLanguage();
   const reducedMotion = useReducedMotion();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="z-[999] relative">
@@ -30,49 +21,23 @@ export default function Header() {
         }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
         transition={motionTransition(reducedMotion)}
-      ></motion.div>
+      />
 
-      <nav className="flex fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
-        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
-          {linkKeys.map((link) => {
-            const linkName = t(`nav.${link.key}`);
-            return (
-              <motion.li
-                className="h-3/4 flex items-center justify-center relative"
-                key={link.hash}
-                initial={{ y: reducedMotion ? 0 : -100, opacity: reducedMotion ? 1 : 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={motionTransition(reducedMotion)}
-              >
-                <Link
-                  className={clsx(
-                    "flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:rounded-full dark:focus:ring-gray-300",
-                    {
-                      "text-gray-950 dark:text-gray-200":
-                        activeSection === link.key,
-                    }
-                  )}
-                  href={link.hash}
-                  onClick={() => {
-                    setActiveSection(link.key);
-                    setTimeOfLastClick(Date.now());
-                  }}
-                  aria-label={`Navigate to ${linkName} section`}
-                >
-                  {linkName}
+      <MobileNav
+        isOpen={mobileMenuOpen}
+        onOpen={() => setMobileMenuOpen(true)}
+        onClose={() => setMobileMenuOpen(false)}
+      />
 
-                  {activeSection === link.key && (
-                    <motion.span
-                      className="bg-gray-100 rounded-full absolute inset-0 -z-10 dark:bg-gray-800"
-                      layoutId="activeSection"
-                      transition={layoutSpringTransition(reducedMotion)}
-                    ></motion.span>
-                  )}
-                </Link>
-              </motion.li>
-            );
-          })}
-        </ul>
+      <nav
+        className="hidden sm:flex fixed top-[1.7rem] left-1/2 h-[initial] -translate-x-1/2 py-0"
+        aria-label="Main"
+      >
+        <NavLinks
+          listClassName="flex items-center justify-center gap-5 text-[0.9rem] font-medium text-gray-500"
+          itemClassName="h-3/4 flex items-center justify-center relative"
+          linkClassName="flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:rounded-full dark:focus:ring-gray-300"
+        />
       </nav>
     </header>
   );

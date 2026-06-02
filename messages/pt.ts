@@ -1,6 +1,8 @@
 export default {
   accessibility: {
     skipToContent: "Pular para o conteúdo principal",
+    openMenu: "Abrir menu de navegação",
+    closeMenu: "Fechar menu de navegação",
     switchToDark: "Ativar modo escuro",
     switchToLight: "Ativar modo claro",
   },
