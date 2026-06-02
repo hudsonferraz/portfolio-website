@@ -4,15 +4,23 @@ import React from "react";
 import { Resend } from "resend";
 import { validateString, validateEmail } from "@/lib/utils";
 import type { ContactErrorCode } from "@/lib/contact-errors";
+import { CONTACT_HONEYPOT_FIELD_NAME } from "@/lib/contact-honeypot";
+import { getResendApiKey } from "@/lib/env";
 import ContactFormEmail from "@/email/contact-form-email";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(getResendApiKey());
 
 type SendEmailResult =
   | { data: unknown }
   | { error: ContactErrorCode };
 
 export const sendEmail = async (formData: FormData): Promise<SendEmailResult> => {
+  const honeypot = formData.get(CONTACT_HONEYPOT_FIELD_NAME);
+
+  if (typeof honeypot === "string" && honeypot.trim().length > 0) {
+    return { data: null };
+  }
+
   const senderEmail = formData.get("senderEmail");
   const message = formData.get("message");
 

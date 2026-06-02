@@ -9,6 +9,7 @@ import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/context/language-context";
 import { isContactErrorCode } from "@/lib/contact-errors";
+import { CONTACT_HONEYPOT_FIELD_NAME } from "@/lib/contact-honeypot";
 import { motionTransition, useReducedMotion } from "@/lib/motion";
 
 export default function Contact() {
@@ -43,7 +44,7 @@ export default function Contact() {
 
       <form
         ref={formRef}
-        className="mt-10 flex flex-col dark:text-black"
+        className="relative mt-10 flex flex-col dark:text-black"
         action={async (formData) => {
           const result = await sendEmail(formData);
 
@@ -59,6 +60,15 @@ export default function Contact() {
           formRef.current?.reset();
         }}
       >
+        <input
+          type="text"
+          name={CONTACT_HONEYPOT_FIELD_NAME}
+          className="honeypot"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          defaultValue=""
+        />
         <input
           className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
           name="senderEmail"
