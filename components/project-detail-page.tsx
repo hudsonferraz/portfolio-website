@@ -77,7 +77,7 @@ export default function ProjectDetailPage({ project }: ProjectDetailPageProps) {
             <h1 className="mt-5 text-3xl font-semibold leading-tight text-gray-950 dark:text-white sm:text-5xl">
               {title}
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-gray-700 dark:text-white/72">
+            <p className="mt-5 text-lg font-medium leading-relaxed text-gray-900 dark:text-white/85">
               {description}
             </p>
             <p className="mt-4 leading-relaxed text-gray-800 dark:text-white/80">
