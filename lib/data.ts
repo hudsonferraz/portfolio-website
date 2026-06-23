@@ -48,6 +48,7 @@ export const skillCategoryKeys = [
 
 export const projectsData = [
   {
+    slug: "vgc-team-lab",
     titleKey: "vgcTeamLab",
     statusKey: "live",
     tags: [
@@ -66,6 +67,7 @@ export const projectsData = [
     },
   },
   {
+    slug: "price-monitor",
     titleKey: "priceMonitor",
     statusKey: "live",
     tags: [
@@ -84,6 +86,7 @@ export const projectsData = [
     },
   },
   {
+    slug: "crypto-mm-lab",
     titleKey: "cryptoMmLab",
     statusKey: "research",
     tags: [

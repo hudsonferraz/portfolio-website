@@ -78,6 +78,7 @@ export default {
     title: "Selected Projects",
     subtitle:
       "Three current builds that show the product range behind my work: trading research, resilient automation, and full-stack tools with clear operational limits.",
+    readCaseStudy: "Case study",
     liveDemo: "Live demo",
     sourceCode: "Source code",
     openLive: "Open live demo for",
@@ -86,6 +87,17 @@ export default {
     status: {
       live: "Live project",
       research: "Research lab",
+    },
+    detail: {
+      backToProjects: "Back to projects",
+      overview: "Overview",
+      stack: "Stack",
+      problem: "Problem",
+      build: "Build",
+      highlights: "Engineering highlights",
+      constraints: "Constraints and trade-offs",
+      results: "What it demonstrates",
+      links: "Project links",
     },
   },
   skills: {
@@ -162,6 +174,30 @@ export default {
         "A full-stack doubles team builder for competitive Pokémon with live Pikalytics meta, regulation-aware legality checks, Showdown import/export, share links, and AI coaching behind a protected server route.",
       outcome:
         "The interesting work is the honest UX around imperfect rules data: fallback meta, pending learnset states, unverified-format notices, and no-account browser storage.",
+      detail: {
+        summary:
+          "VGC Team Lab turns competitive team building into a guided workflow: build the roster, apply meta sets, inspect legality, review matchup coverage, ask for coaching, and export the result to Pokémon Showdown.",
+        problem:
+          "Competitive VGC tooling has to deal with fast-changing formats, partial data, and player workflows that jump between usage stats, legality checks, and Showdown pastes. The goal was to make those jumps feel coherent without pretending the app is an official event authority.",
+        build:
+          "The app is a React SPA backed by an Express proxy for live Pikalytics data and AI coaching. Team data stays in localStorage, while the server handles CORS, rate limits, Hugging Face credentials, Pikalytics parsing, cache fallback, and body validation.",
+        highlights: [
+          "Six-step team builder with roster, sets, legality, matchups, coach, and export stages.",
+          "Regulation-aware legality checks with explicit pending and unverified states when source data is incomplete.",
+          "Showdown import/export, VGC form-name mapping, and share URLs for compact team payloads.",
+          "Server-side AI route keeps tokens out of the browser and applies timeout, allowlist, and rate-limit protection."
+        ],
+        constraints: [
+          "It is a team-building lab, not an official Pokémon legality authority.",
+          "Teams are browser-local unless exported or shared through a URL payload.",
+          "Pikalytics data is scraped and cached, so the UI includes fallback and cold-start states."
+        ],
+        results: [
+          "69 automated tests across legality, Showdown parsing, schema health, API protection, and smoke coverage.",
+          "A portfolio project that shows product UX, API integration, and careful communication of data uncertainty.",
+          "Live frontend on GitHub Pages with the API proxy deployed separately on Render."
+        ],
+      },
     },
     priceMonitor: {
       title: "Facebook Marketplace Price Monitor",
@@ -169,6 +205,30 @@ export default {
         "A Brazil-first deal tracker that saves Marketplace searches, polls them through a long-running Playwright worker, compares listing history, and raises dashboard or email alerts for new matches and price drops.",
       outcome:
         "It demonstrates the operational side of full-stack work: BullMQ scheduling, Redis-backed jobs, Neon/Prisma persistence, OAuth, Resend email, mock mode, and a split Vercel plus Render deploy.",
+      detail: {
+        summary:
+          "Price Monitor is a single-user marketplace alert system: save a keyword and price window, let a worker poll Facebook Marketplace, compare results against historical prices, and surface new listings or drops in the dashboard and email.",
+        problem:
+          "Marketplace monitoring is messy because the UI changes, sessions expire, jobs can overlap, and alerts need per-search memory. The app focuses on a realistic small production shape instead of a fake happy-path scraper.",
+        build:
+          "The web app runs on Next.js with NextAuth, Prisma, Neon Postgres, and Upstash Redis. A separate Render worker runs Playwright and BullMQ jobs, merges GraphQL/JSON/DOM parser outputs, records poll runs, and sends Resend emails when user preferences allow it.",
+        highlights: [
+          "BullMQ scheduler with job deduplication, concurrency 1, manual cooldowns, stale RUNNING recovery, and exponential backoff.",
+          "Per-search listing price memory so overlapping searches can detect price drops independently.",
+          "Parser adapter stack that merges GraphQL interception, embedded JSON, and DOM fallback results.",
+          "Mock mode for local alert and email testing without a live Facebook session."
+        ],
+        constraints: [
+          "This is personal and educational tooling, not authorized Meta infrastructure.",
+          "Live polling depends on an exported Facebook session that can expire and must be refreshed manually.",
+          "The worker deploy is separate from Vercel because Playwright needs a long-running server environment."
+        ],
+        results: [
+          "57 automated tests covering price parsing, URL/DOM/JSON parsing, scheduling, rate limits, alert logic, email safety, and schemas.",
+          "A deployable full-stack system with a clear web/worker boundary and operational documentation.",
+          "Brazil-first UX with BRL cents, pt-BR defaults, Marketplace location hints, and English support."
+        ],
+      },
     },
     cryptoMmLab: {
       title: "Crypto Market Making Lab",
@@ -176,6 +236,30 @@ export default {
         "A paper market-making research lab that pulls live CEX order books, simulates quote placement and fills, tracks inventory/PnL, compares CEX vs Uniswap V2 prices, and exposes a FastAPI dashboard.",
       outcome:
         "This is closest to my trading-systems work: risk controls, kill switch, stale-data guards, pluggable strategies, backtesting, Prometheus metrics, Grafana dashboards, and tick-level auditability.",
+      detail: {
+        summary:
+          "Crypto MM Lab is an end-to-end paper trading loop for studying market-making mechanics: fetch public order books, place simulated quotes, process fills, track PnL, scan CEX/DEX differences, and inspect the system through APIs and dashboards.",
+        problem:
+          "Market-making research needs more than a notebook. You need a repeatable loop, explicit risk controls, observability, audit trails, and backtests that use the same strategy assumptions as the live paper loop.",
+        build:
+          "The backend is FastAPI with CCXT market data, SQLAlchemy persistence, strategy modules, a paper broker, Prometheus metrics, Grafana dashboards, Docker Compose, and scripts for live loops or historical replay.",
+        highlights: [
+          "Shared tick IDs join order books, quotes, fills, positions, PnL, and opportunities for auditability.",
+          "Risk controls include position caps, cumulative cash reservation, stale-tick cancellation, and a kill switch.",
+          "Pluggable strategies cover pure market making, inventory skew, and volatility-adjusted spreads.",
+          "Backtest mode replays SQLite/Postgres snapshots or CSV fixtures with drawdown, fill rate, and Sharpe-like metrics."
+        ],
+        constraints: [
+          "The system is paper-only and never places live CEX or on-chain orders.",
+          "Execution is simulated with conservative fill modes and no queue-position or latency model.",
+          "Dashboard and APIs are intentionally unauthenticated for local research, so they should not be exposed publicly without a proxy."
+        ],
+        results: [
+          "110 automated tests across order book math, fills, PnL, AMM, arbitrage scanning, backtests, API routes, stale-data guards, and loop recovery.",
+          "A research-grade demo of trading-system fundamentals: controls, observability, persistence, and failure handling.",
+          "A Docker stack that brings up the app, Prometheus, and Grafana for local monitoring."
+        ],
+      },
     },
   },
 };

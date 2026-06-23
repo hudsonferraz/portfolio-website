@@ -2,12 +2,14 @@
 
 import { useRef } from "react";
 import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { useLanguage } from "@/context/language-context";
 import { useReducedMotion } from "@/lib/motion";
 
 type ProjectProps = {
+  slug: string;
   titleKey?: string;
   title: string;
   description: string;
@@ -23,6 +25,7 @@ type ProjectProps = {
 };
 
 export default function Project({
+  slug,
   title,
   description,
   outcome,
@@ -93,9 +96,17 @@ export default function Project({
           </ul>
 
           <div className="mt-6 flex flex-wrap gap-3 sm:mt-auto">
+            <Link
+              className="inline-flex items-center gap-2 rounded-md bg-gray-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 dark:bg-white dark:text-gray-950 dark:hover:bg-white/85"
+              href={`/projects/${slug}`}
+              aria-label={`${t("projects.readCaseStudy")} ${title}`}
+            >
+              {t("projects.readCaseStudy")}
+              <FaArrowRight aria-hidden="true" className="h-3.5 w-3.5" />
+            </Link>
             {links.live ? (
               <a
-                className="inline-flex items-center gap-2 rounded-md bg-gray-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 dark:bg-white dark:text-gray-950 dark:hover:bg-white/85"
+                className="inline-flex items-center gap-2 rounded-md border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-gray-900 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
                 href={links.live}
                 target="_blank"
                 rel="noreferrer noopener"
@@ -132,4 +143,3 @@ export default function Project({
     </motion.article>
   );
 }
-

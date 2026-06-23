@@ -41,7 +41,7 @@ export default function NavLinks({
               className={clsx(linkClassName, {
                 "text-gray-950 dark:text-gray-200": isActive,
               })}
-              href={link.hash}
+              href={`/${link.hash}`}
               onClick={() => {
                 setActiveSection(link.key);
                 setTimeOfLastClick(Date.now());
@@ -65,3 +65,4 @@ export default function NavLinks({
     </ul>
   );
 }
+
