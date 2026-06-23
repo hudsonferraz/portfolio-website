@@ -30,7 +30,7 @@ export default {
     description:
       "I design and operate exchange integrations (CLOB and AMM), strategy engines, and production infrastructure for long-running trading bots. I care about reliable automation, clear observability, and maintainable code that supports both research (backtesting) and live trading.",
     description2:
-      "I studied Information Systems at UFVJM (Diamantina, MG). I got into programming through game bots and kept learning on my own. Today I work at Funttastic on HFT and market-making platforms—building exchange connectors, liquidity engines, and distributed infrastructure across multiple blockchains.",
+      "I studied Information Systems at UFVJM (Diamantina, MG). I got into programming through game bots and kept learning on my own. Today I work at Funttastic on HFT and market-making platforms, building exchange connectors, liquidity engines, and distributed infrastructure across multiple blockchains.",
     englishNote:
       "Fluent in English (EF SET C2 Proficient). Comfortable collaborating with international teams in English.",
   },
@@ -39,16 +39,16 @@ export default {
     roles: {
       funttastic: {
         title: "Full-Stack Developer",
-        company: "Funttastic · Remote",
-        date: "2024 – Present",
+        company: "Funttastic - Remote",
+        date: "2024 - Present",
         description:
-          "I contribute to high-frequency trading and market-making platforms—integrating exchanges, liquidity provisioning algorithms, and distributed infrastructure across multiple blockchains.",
+          "I contribute to high-frequency trading and market-making platforms, integrating exchanges, liquidity provisioning algorithms, and distributed infrastructure across multiple blockchains.",
         highlightsTitle: "Selected technical work",
       },
       education: {
         title: "Information Systems",
-        company: "UFVJM · Diamantina, MG",
-        date: "2014 – Incomplete",
+        company: "UFVJM - Diamantina, MG",
+        date: "2014 - Incomplete",
         description:
           "Coursework in software engineering and systems design. Continued learning through self-study and production work in trading systems and full-stack development.",
       },
@@ -75,8 +75,18 @@ export default {
     },
   },
   projects: {
-    title: "My Projects",
-    viewProject: "Click here to learn more about this project.",
+    title: "Selected Projects",
+    subtitle:
+      "Three current builds that show the product range behind my work: trading research, resilient automation, and full-stack tools with clear operational limits.",
+    liveDemo: "Live demo",
+    sourceCode: "Source code",
+    openLive: "Open live demo for",
+    openSource: "Open source code for",
+    imageAlt: "Screenshot of",
+    status: {
+      live: "Live project",
+      research: "Research lab",
+    },
   },
   skills: {
     title: "Skills",
@@ -140,36 +150,32 @@ export default {
   footer: {
     tagline:
       "Full-stack developer building trading systems, exchange integrations, and production infrastructure.",
-    location: "Brazil · Remote",
+    location: "Brazil - Remote",
     copyright: "All rights reserved.",
     stackNote:
       "Built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and deployed on Vercel.",
   },
   projectsData: {
-    taskify: {
-      title: "Taskify",
+    vgcTeamLab: {
+      title: "VGC Team Lab",
       description:
-        "Taskify is a Trello-style management application, including a PRO version that allows unlimited board creation.",
+        "A full-stack doubles team builder for competitive Pokémon with live Pikalytics meta, regulation-aware legality checks, Showdown import/export, share links, and AI coaching behind a protected server route.",
+      outcome:
+        "The interesting work is the honest UX around imperfect rules data: fallback meta, pending learnset states, unverified-format notices, and no-account browser storage.",
     },
-    pokedex: {
-      title: "Pokedex",
-      description: "Project made to practice API consumption using PokeAPI.",
-    },
-    carShowcase: {
-      title: "Car Showcase",
+    priceMonitor: {
+      title: "Facebook Marketplace Price Monitor",
       description:
-        "Website that searches and filters cars, made to practice using multiple APIs.",
+        "A Brazil-first deal tracker that saves Marketplace searches, polls them through a long-running Playwright worker, compares listing history, and raises dashboard or email alerts for new matches and price drops.",
+      outcome:
+        "It demonstrates the operational side of full-stack work: BullMQ scheduling, Redis-backed jobs, Neon/Prisma persistence, OAuth, Resend email, mock mode, and a split Vercel plus Render deploy.",
     },
-    dogs: {
-      title: "Dogs",
+    cryptoMmLab: {
+      title: "Crypto Market Making Lab",
       description:
-        "A social media for dogs. Instagram-style website with its basic features.",
-    },
-    travelApp: {
-      title: "Travel App",
-      description:
-        "Simple Landing Page made to practice TailwindCSS and TypeScript.",
+        "A paper market-making research lab that pulls live CEX order books, simulates quote placement and fills, tracks inventory/PnL, compares CEX vs Uniswap V2 prices, and exposes a FastAPI dashboard.",
+      outcome:
+        "This is closest to my trading-systems work: risk controls, kill switch, stale-data guards, pluggable strategies, backtesting, Prometheus metrics, Grafana dashboards, and tick-level auditability.",
     },
   },
 };
-

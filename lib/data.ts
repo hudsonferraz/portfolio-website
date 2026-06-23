@@ -1,8 +1,6 @@
-import dogs from "@/public/dogs.png";
-import taskify from "@/public/taskify.png";
-import pokedex from "@/public/pokedex.png";
-import travelApp from "@/public/travel-app.png";
-import carShowcase from "@/public/car-showcase.png";
+import vgcTeamLab from "@/public/vgc-team-lab.png";
+import priceMonitor from "@/public/price-monitor.png";
+import cryptoMmLab from "@/public/crypto-mm-lab.png";
 
 export const linkKeys = [
   {
@@ -50,42 +48,56 @@ export const skillCategoryKeys = [
 
 export const projectsData = [
   {
-    titleKey: "taskify",
+    titleKey: "vgcTeamLab",
+    statusKey: "live",
     tags: [
       "React",
       "TypeScript",
-      "Next.js",
-      "TailwindCSS",
-      "Prisma",
-      "Stripe",
-      "MySQL",
+      "Express",
+      "PokeAPI",
+      "Pikalytics",
+      "AI Proxy",
     ],
-    imageUrl: taskify,
-    link: "https://github.com/hudsonferraz/taskify",
+    metrics: ["69 tests", "Showdown import/export", "Live meta"],
+    imageUrl: vgcTeamLab,
+    links: {
+      live: "https://hudsonferraz.github.io/pokedex/",
+      source: "https://github.com/hudsonferraz/pokedex",
+    },
   },
   {
-    titleKey: "pokedex",
-    tags: ["React"],
-    imageUrl: pokedex,
-    link: "https://github.com/hudsonferraz/pokedex",
+    titleKey: "priceMonitor",
+    statusKey: "live",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "BullMQ",
+      "Playwright",
+      "Prisma",
+      "Redis",
+    ],
+    metrics: ["57 tests", "Worker queue", "Price-drop alerts"],
+    imageUrl: priceMonitor,
+    links: {
+      live: "https://fb-price-monitor.vercel.app",
+      source: "https://github.com/hudsonferraz/price-monitor",
+    },
   },
   {
-    titleKey: "carShowcase",
-    tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
-    imageUrl: carShowcase,
-    link: "https://github.com/hudsonferraz/car-showcase",
-  },
-  {
-    titleKey: "dogs",
-    tags: ["React"],
-    imageUrl: dogs,
-    link: "https://github.com/hudsonferraz/dogs",
-  },
-  {
-    titleKey: "travelApp",
-    tags: ["React", "TypeScript", "TailwindCSS", "Next.js"],
-    imageUrl: travelApp,
-    link: "https://github.com/hudsonferraz/hilink-app",
+    titleKey: "cryptoMmLab",
+    statusKey: "research",
+    tags: [
+      "Python",
+      "FastAPI",
+      "CCXT",
+      "SQLAlchemy",
+      "Prometheus",
+      "Docker",
+    ],
+    metrics: ["110 tests", "Paper trading", "Backtests"],
+    imageUrl: cryptoMmLab,
+    links: {
+      source: "https://github.com/hudsonferraz/crypto-mm-lab",
+    },
   },
 ] as const;
-
