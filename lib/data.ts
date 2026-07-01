@@ -1,3 +1,4 @@
+﻿import secretSanta from "@/public/secret-santa.png";
 import vgcTeamLab from "@/public/vgc-team-lab.png";
 import priceMonitor from "@/public/price-monitor.png";
 import cryptoMmLab from "@/public/crypto-mm-lab.png";
@@ -47,6 +48,25 @@ export const skillCategoryKeys = [
 ] as const;
 
 export const projectsData = [
+  {
+    slug: "secret-santa",
+    titleKey: "secretSanta",
+    statusKey: "live",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Zod",
+    ],
+    metrics: ["15 tests", "Private links", "Grouped draws"],
+    imageUrl: secretSanta,
+    links: {
+      live: "https://hfo-amigo-secreto.vercel.app/",
+      source: "https://github.com/hudsonferraz/secret_santa",
+    },
+  },
   {
     slug: "vgc-team-lab",
     titleKey: "vgcTeamLab",

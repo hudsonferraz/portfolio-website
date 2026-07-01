@@ -77,7 +77,7 @@ export default {
   projects: {
     title: "Projetos Selecionados",
     subtitle:
-      "Três projetos atuais que mostram meu alcance de produto: pesquisa em trading, automação resiliente e ferramentas full-stack com limites operacionais claros.",
+      "Quatro projetos atuais que mostram meu alcance de produto: ferramentas úteis para o dia a dia, pesquisa em trading, automação resiliente e produtos full-stack com limites operacionais claros.",
     readCaseStudy: "Case study",
     liveDemo: "Demo ao vivo",
     sourceCode: "Código fonte",
@@ -169,6 +169,37 @@ export default {
       "Feito com Next.js, TypeScript, Tailwind CSS, Framer Motion e publicado na Vercel.",
   },
   projectsData: {
+    secretSanta: {
+      title: "Amigo Secreto",
+      description:
+        "Um app privado de amigo secreto criado para uso real em família: crie um evento, adicione participantes ou grupos, valide e rode o sorteio, e envie um link privado de revelação pelo WhatsApp.",
+      outcome:
+        "O trabalho de produto é o ponto forte: links privados em vez de busca por telefone, regras de grupos, validação antes de confirmar o sorteio, confirmação antes da revelação e dashboard mobile-first para o organizador.",
+      detail: {
+        summary:
+          "Amigo Secreto substitui o fluxo de planilha e mensagens manuais por um app focado para o organizador: criar evento, gerenciar pessoas e grupos, executar um sorteio válido e compartilhar um link privado por participante.",
+        problem:
+          "Eventos pequenos de família ainda têm restrições reais de produto: os resultados não podem vazar, participantes não deveriam precisar criar conta, famílias/grupos podem exigir regras de separação e o organizador normalmente envia tudo pelo celular no WhatsApp.",
+        build:
+          "O app usa Next.js App Router, React, TypeScript, Prisma/PostgreSQL, validação com Zod, cookies JWT de sessão e Vitest. As atribuições ficam em relações no banco, as páginas de revelação usam tokens privados e o preview do sorteio usa as mesmas regras do sorteio confirmado.",
+        highlights: [
+          "Links privados /r/{token} evitam busca por telefone e mantêm participantes sem conta.",
+          "Backtracking randomizado suporta bloqueio de auto-sorteio e sorteios opcionais apenas entre grupos diferentes.",
+          "Preview do sorteio explica composições impossíveis de grupos/participantes antes da confirmação.",
+          "Fluxo de WhatsApp permite copiar links, copiar mensagens prontas, abrir WhatsApp e marcar links como enviados."
+        ],
+        constraints: [
+          "Links de revelação são bearer secrets, então qualquer pessoa com o link de um participante pode ver o resultado daquele participante.",
+          "O envio é liderado pelo organizador em vez de usar a WhatsApp Business API, mantendo o app prático para eventos pequenos.",
+          "Eventos bloqueiam edição de participantes e grupos após o sorteio até o organizador resetar as atribuições."
+        ],
+        results: [
+          "15 testes automatizados cobrem eventos com duas pessoas, sorteios agrupados, composições impossíveis e execuções repetidas.",
+          "Um projeto live com cara de produto real, mostrando limites de privacidade, UX de validação, modelagem relacional e workflow admin mobile.",
+          "Um exemplo claro de software feito para um fluxo pessoal real sem exagerar na complexidade social."
+        ],
+      },
+    },
     vgcTeamLab: {
       title: "VGC Team Lab",
       description:

@@ -77,7 +77,7 @@ export default {
   projects: {
     title: "Selected Projects",
     subtitle:
-      "Three current builds that show the product range behind my work: trading research, resilient automation, and full-stack tools with clear operational limits.",
+      "Four current builds that show the product range behind my work: useful everyday products, trading research, resilient automation, and full-stack tools with clear operational limits.",
     readCaseStudy: "Case study",
     liveDemo: "Live demo",
     sourceCode: "Source code",
@@ -168,7 +168,37 @@ export default {
       "Built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and deployed on Vercel.",
   },
   projectsData: {
-    vgcTeamLab: {
+    secretSanta: {
+      title: "Secret Santa Organizer",
+      description:
+        "A private Secret Santa app built for real family use: create an event, add participants or groups, validate and run the draw, then send each person a private reveal link over WhatsApp.",
+      outcome:
+        "The product work is the interesting part: private bearer links instead of phone lookup, grouped draw constraints, preview-before-commit validation, reveal confirmation, and a mobile-first organizer dashboard.",
+      detail: {
+        summary:
+          "Secret Santa Organizer replaces the spreadsheet/manual-message workflow with a focused app for one organizer: create the event, manage people and groups, run a valid draw, and share one private reveal link per participant.",
+        problem:
+          "Small family events still have real product constraints: assignments should not leak, participants should not need accounts, grouped families may need separation rules, and the organizer usually sends everything from a phone through WhatsApp.",
+        build:
+          "The app uses Next.js App Router, React, TypeScript, Prisma/PostgreSQL, Zod validation, JWT session cookies, and Vitest. Assignments are relational rows, reveal pages use private tokens, and the draw preview uses the same matching rules as the committed draw.",
+        highlights: [
+          "Private /r/{token} reveal links avoid phone-number lookup and keep participants account-free.",
+          "Randomized backtracking supports no-self matches and optional cross-group-only draws.",
+          "Draw preview explains blocking group/participant compositions before the organizer commits.",
+          "WhatsApp workflow supports copying links, copying ready-to-send messages, opening WhatsApp, and marking links as sent."
+        ],
+        constraints: [
+          "Reveal links are bearer secrets, so anyone with a participant link can see that participant's match.",
+          "Sharing is organizer-led instead of using the WhatsApp Business API, keeping the app practical for small events.",
+          "Events lock participant and group edits after the draw until the organizer resets assignments."
+        ],
+        results: [
+          "15 automated tests cover two-person events, grouped draws, impossible compositions, and repeated runs.",
+          "A live product-style project that shows privacy boundaries, validation UX, relational modeling, and mobile admin workflows.",
+          "A clear example of building software for a real personal workflow without over-engineering the social side."
+        ],
+      },
+    },    vgcTeamLab: {
       title: "VGC Team Lab",
       description:
         "A full-stack doubles team builder for competitive Pokémon with live Pikalytics meta, regulation-aware legality checks, Showdown import/export, share links, and AI coaching behind a protected server route.",
