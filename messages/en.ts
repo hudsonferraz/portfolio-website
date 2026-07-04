@@ -87,6 +87,7 @@ export default {
     status: {
       live: "Live project",
       research: "Research lab",
+      local: "Local-first app",
     },
     detail: {
       backToProjects: "Back to projects",
@@ -232,31 +233,31 @@ export default {
     priceMonitor: {
       title: "Facebook Marketplace Price Monitor",
       description:
-        "A Brazil-first deal tracker that saves Marketplace searches, polls them through a long-running Playwright worker, compares listing history, and raises dashboard or email alerts for new matches and price drops.",
+        "A local-first Facebook Marketplace deal monitor for Brazil: save keyword and price searches, run a local Playwright worker with your own Facebook browser profile, and review listings, price drops, and worker health in the dashboard.",
       outcome:
-        "It demonstrates the operational side of full-stack work: BullMQ scheduling, Redis-backed jobs, Neon/Prisma persistence, OAuth, Resend email, mock mode, and a split Vercel plus Render deploy.",
+        "The system keeps Facebook-facing automation on the user's machine, exposes worker heartbeat and session health in the dashboard, and relies on deterministic alert logic for listings, price drops, and deal-quality signals.",
       detail: {
         summary:
-          "Price Monitor is a single-user marketplace alert system: save a keyword and price window, let a worker poll Facebook Marketplace, compare results against historical prices, and surface new listings or drops in the dashboard and email.",
+          "Price Monitor is a local automation product: the web dashboard manages saved searches and alerts, while a local worker owns Marketplace scraping, Facebook session state, polling jobs, and health reporting.",
         problem:
-          "Marketplace monitoring is messy because the UI changes, sessions expire, jobs can overlap, and alerts need per-search memory. The app focuses on a realistic small production shape instead of a fake happy-path scraper.",
+          "Marketplace monitoring needs a practical boundary around browser sessions, scraping failures, and long-running jobs. This project keeps that boundary local and makes the worker's state visible instead of hiding operational complexity.",
         build:
-          "The web app runs on Next.js with NextAuth, Prisma, Neon Postgres, and Upstash Redis. A separate Render worker runs Playwright and BullMQ jobs, merges GraphQL/JSON/DOM parser outputs, records poll runs, and sends Resend emails when user preferences allow it.",
+          "The app uses Next.js, TypeScript, BullMQ, Playwright, Prisma, local Docker Postgres/Redis, and a persistent .facebook-profile browser directory. The worker scrapes Marketplace, merges GraphQL/embedded JSON/DOM parser results, updates per-search price memory, and records heartbeat/failure summaries for the dashboard.",
         highlights: [
-          "BullMQ scheduler with job deduplication, concurrency 1, manual cooldowns, stale RUNNING recovery, and exponential backoff.",
-          "Per-search listing price memory so overlapping searches can detect price drops independently.",
-          "Parser adapter stack that merges GraphQL interception, embedded JSON, and DOM fallback results.",
-          "Mock mode for local alert and email testing without a live Facebook session."
+          "Local worker keeps Facebook browser/session data on the user's machine.",
+          "Worker heartbeat dashboard shows online/stale/offline state, session mode, latest successful scrape, and latest failure type.",
+          "Resilient scraper merges GraphQL interception, embedded JSON, and DOM fallback results into one listing model.",
+          "Reliable polling keeps BullMQ deduplication, concurrency 1, manual cooldowns, stale RUNNING recovery, and exponential backoff."
         ],
         constraints: [
-          "This is personal and educational tooling, not authorized Meta infrastructure.",
-          "Live polling depends on an exported Facebook session that can expire and must be refreshed manually.",
-          "The worker deploy is separate from Vercel because Playwright needs a long-running server environment."
+          "The app requires a local worker and a manually maintained Facebook browser session.",
+          "It is personal and educational tooling, not authorized Meta infrastructure.",
+          "The dashboard reports worker and session state clearly so scraping failures are visible to the user."
         ],
         results: [
-          "57 automated tests covering price parsing, URL/DOM/JSON parsing, scheduling, rate limits, alert logic, email safety, and schemas.",
-          "A deployable full-stack system with a clear web/worker boundary and operational documentation.",
-          "Brazil-first UX with BRL cents, pt-BR defaults, Marketplace location hints, and English support."
+          "147 automated tests cover parsing, scheduling, cooldowns, price-drop logic, deal-quality signals, localized queue messages, cleanup, auth/ownership guards, and middleware paths.",
+          "A clear product boundary: local scraping and local data by default, with dashboard visibility for the parts that can fail.",
+          "Brazil-first UX with BRL cents, pt-BR defaults, Marketplace location hints, listing alerts, and English support."
         ],
       },
     },

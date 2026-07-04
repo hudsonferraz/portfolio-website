@@ -87,6 +87,7 @@ export default {
     status: {
       live: "Projeto no ar",
       research: "Lab de pesquisa",
+      local: "App local-first",
     },
     detail: {
       backToProjects: "Voltar aos projetos",
@@ -234,31 +235,31 @@ export default {
     priceMonitor: {
       title: "Facebook Marketplace Price Monitor",
       description:
-        "Um rastreador de ofertas focado no Brasil que salva buscas do Marketplace, executa polling por worker Playwright, compara histórico de anúncios e gera alertas no dashboard ou por email para novos matches e quedas de preço.",
+        "Um monitor local-first de ofertas do Facebook Marketplace para o Brasil: salve buscas por palavra-chave e preço, rode um worker Playwright local com seu próprio perfil de navegador do Facebook e acompanhe anúncios, quedas de preço e saúde do worker no dashboard.",
       outcome:
-        "Ele mostra o lado operacional do full-stack: agendamento com BullMQ, jobs em Redis, persistência Neon/Prisma, OAuth, emails com Resend, mock mode e deploy dividido entre Vercel e Render.",
+        "O sistema mantém a automação que conversa com o Facebook na máquina do usuário, mostra heartbeat e saúde da sessão no dashboard e usa lógica determinística para alertas de anúncios, quedas de preço e sinais de qualidade de oferta.",
       detail: {
         summary:
-          "Price Monitor é um sistema de alertas single-user para marketplace: salve palavra-chave e faixa de preço, deixe um worker consultar o Facebook Marketplace, compare resultados contra preços históricos e veja novos anúncios ou quedas no dashboard e por email.",
+          "Price Monitor é um produto de automação local: o dashboard web gerencia buscas salvas e alertas, enquanto um worker local cuida do scraping do Marketplace, sessão do Facebook, jobs de polling e relatórios de saúde.",
         problem:
-          "Monitorar Marketplace é bagunçado porque a UI muda, sessões expiram, jobs podem sobrepor e alertas precisam de memória por busca. O app foca em uma forma pequena, mas realista, de produção em vez de um scraper de caminho feliz.",
+          "Monitorar Marketplace exige uma fronteira prática para sessões de navegador, falhas de scraping e jobs de longa duração. Este projeto mantém essa fronteira local e torna o estado do worker visível em vez de esconder a complexidade operacional.",
         build:
-          "O web app roda em Next.js com NextAuth, Prisma, Neon Postgres e Upstash Redis. Um worker separado no Render executa Playwright e jobs BullMQ, combina saídas de parsers GraphQL/JSON/DOM, registra poll runs e envia emails via Resend quando a preferência do usuário permite.",
+          "O app usa Next.js, TypeScript, BullMQ, Playwright, Prisma, Postgres/Redis locais via Docker e um diretório persistente .facebook-profile para o navegador. O worker coleta Marketplace, combina resultados de GraphQL/JSON embutido/DOM, atualiza memória de preço por busca e registra heartbeat/resumos de falha para o dashboard.",
         highlights: [
-          "Scheduler BullMQ com deduplicação, concorrência 1, cooldown manual, recuperação de RUNNING stale e backoff exponencial.",
-          "Memória de preço por busca para detectar quedas corretamente mesmo com buscas sobrepostas.",
-          "Stack de parsers que combina interceptação GraphQL, JSON embutido e fallback DOM.",
-          "Mock mode para testar alertas e email localmente sem sessão ativa do Facebook."
+          "Worker local mantém dados de navegador e sessão do Facebook na máquina do usuário.",
+          "Dashboard de heartbeat mostra estado online/stale/offline, modo de sessão, último scrape bem-sucedido e último tipo de falha.",
+          "Scraper resiliente combina interceptação GraphQL, JSON embutido e fallback DOM em um único modelo de anúncio.",
+          "Polling confiável mantém deduplicação BullMQ, concorrência 1, cooldown manual, recuperação de RUNNING stale e backoff exponencial."
         ],
         constraints: [
+          "O app exige um worker local e uma sessão do Facebook mantida manualmente.",
           "É uma ferramenta pessoal e educacional, não infraestrutura autorizada pela Meta.",
-          "Polling real depende de uma sessão exportada do Facebook que pode expirar e precisa ser renovada manualmente.",
-          "O worker fica separado da Vercel porque Playwright precisa de um ambiente de servidor long-running."
+          "O dashboard reporta claramente o estado do worker e da sessão para que falhas de scraping fiquem visíveis ao usuário."
         ],
         results: [
-          "57 testes automatizados cobrindo parsing de preço, parsing URL/DOM/JSON, agendamento, rate limits, lógica de alertas, segurança de email e schemas.",
-          "Um sistema full-stack implantável com fronteira clara entre web e worker e documentação operacional.",
-          "UX Brazil-first com centavos em BRL, pt-BR como padrão, dicas de localização do Marketplace e suporte a inglês."
+          "147 testes automatizados cobrem parsing, agendamento, cooldowns, lógica de queda de preço, sinais de qualidade de oferta, mensagens localizadas de fila, limpeza, auth/ownership guards e rotas de middleware.",
+          "Uma fronteira de produto clara: scraping e dados locais por padrão, com visibilidade no dashboard para as partes que podem falhar.",
+          "UX Brazil-first com centavos em BRL, pt-BR como padrão, dicas de localização do Marketplace, alertas de anúncios e suporte a inglês."
         ],
       },
     },

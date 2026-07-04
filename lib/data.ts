@@ -1,4 +1,4 @@
-﻿import secretSanta from "@/public/secret-santa.png";
+import secretSanta from "@/public/secret-santa.png";
 import vgcTeamLab from "@/public/vgc-team-lab.png";
 import priceMonitor from "@/public/price-monitor.png";
 import cryptoMmLab from "@/public/crypto-mm-lab.png";
@@ -89,19 +89,18 @@ export const projectsData = [
   {
     slug: "price-monitor",
     titleKey: "priceMonitor",
-    statusKey: "live",
+    statusKey: "local",
     tags: [
       "Next.js",
       "TypeScript",
       "BullMQ",
       "Playwright",
       "Prisma",
-      "Redis",
+      "Docker",
     ],
-    metrics: ["57 tests", "Worker queue", "Price-drop alerts"],
+    metrics: ["147 tests", "Local worker", "Health dashboard"],
     imageUrl: priceMonitor,
     links: {
-      live: "https://fb-price-monitor.vercel.app",
       source: "https://github.com/hudsonferraz/price-monitor",
     },
   },
