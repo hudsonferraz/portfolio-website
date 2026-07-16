@@ -77,7 +77,7 @@ export default {
   projects: {
     title: "Selected Projects",
     subtitle:
-      "Four current builds that show the product range behind my work: useful everyday products, trading research, resilient automation, and full-stack tools with clear operational limits.",
+      "Four current builds that show the product range behind my work: useful everyday products, trading research, resilient local automation, and full-stack tools with clear operational limits.",
     readCaseStudy: "Case study",
     liveDemo: "Live demo",
     sourceCode: "Source code",
@@ -123,17 +123,17 @@ export default {
         "CCXT",
         "Hummingbot",
       ],
-      blockchain: ["Cosmos SDK", "GraphQL", "CLOB", "AMM", "Raydium"],
+      blockchain: ["Cosmos SDK", "GraphQL", "CLOB", "AMM", "web3.py"],
       frontend: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
       infrastructure: [
         "Git",
         "Docker",
-        "Bun",
+        "Playwright",
+        "BullMQ",
+        "Prometheus",
         "Node.js",
-        "Observability",
-        "Linux",
       ],
-      data: ["MySQL", "MongoDB", "Prisma", "REST APIs"],
+      data: ["PostgreSQL", "Prisma", "Redis", "REST APIs"],
     },
   },
   contact: {
@@ -181,7 +181,7 @@ export default {
         problem:
           "Small family events still have real product constraints: assignments should not leak, participants should not need accounts, grouped families may need separation rules, and the organizer usually sends everything from a phone through WhatsApp.",
         build:
-          "The app uses Next.js App Router, React, TypeScript, Prisma/PostgreSQL, Zod validation, JWT session cookies, and Vitest. Assignments are relational rows, reveal pages use private tokens, and the draw preview uses the same matching rules as the committed draw.",
+          "The app uses Next.js App Router, React, TypeScript, Prisma/PostgreSQL (Neon), Zod validation, JWT session cookies, and Vitest. Assignments are relational rows, reveal pages use private tokens, and the draw preview uses the same matching rules as the committed draw.",
         highlights: [
           "Private /r/{token} reveal links avoid phone-number lookup and keep participants account-free.",
           "Randomized backtracking supports no-self matches and optional cross-group-only draws.",
@@ -195,36 +195,37 @@ export default {
         ],
         results: [
           "15 automated tests cover two-person events, grouped draws, impossible compositions, and repeated runs.",
-          "A live product-style project that shows privacy boundaries, validation UX, relational modeling, and mobile admin workflows.",
+          "A live product-style project on Vercel + Neon that shows privacy boundaries, validation UX, relational modeling, and mobile admin workflows.",
           "A clear example of building software for a real personal workflow without over-engineering the social side."
         ],
       },
-    },    vgcTeamLab: {
+    },
+    vgcTeamLab: {
       title: "VGC Team Lab",
       description:
-        "A full-stack doubles team builder for competitive Pokémon with live Pikalytics meta, regulation-aware legality checks, Showdown import/export, share links, and AI coaching behind a protected server route.",
+        "A full-stack doubles team builder for competitive Pokémon with live Pikalytics meta, regulation-aware legality checks, Showdown import/export, a guided six-step workflow, and AI coaching behind a protected server route.",
       outcome:
-        "The interesting work is the honest UX around imperfect rules data: fallback meta, pending learnset states, unverified-format notices, and no-account browser storage.",
+        "The interesting work is the honest UX around imperfect rules data: walkthrough onboarding, fallback meta, pending learnset states, unverified-format notices, CI, and no-account browser storage.",
       detail: {
         summary:
-          "VGC Team Lab turns competitive team building into a guided workflow: build the roster, apply meta sets, inspect legality, review matchup coverage, ask for coaching, and export the result to Pokémon Showdown.",
+          "VGC Team Lab turns competitive team building into a guided workflow: build the roster, apply meta sets, inspect legality, review matchup coverage, ask for coaching, and export the result to Pokémon Showdown. Default format is Pokémon Champions Reg M-A.",
         problem:
           "Competitive VGC tooling has to deal with fast-changing formats, partial data, and player workflows that jump between usage stats, legality checks, and Showdown pastes. The goal was to make those jumps feel coherent without pretending the app is an official event authority.",
         build:
-          "The app is a React SPA backed by an Express proxy for live Pikalytics data and AI coaching. Team data stays in localStorage, while the server handles CORS, rate limits, Hugging Face credentials, Pikalytics parsing, cache fallback, and body validation.",
+          "The app is a React SPA backed by an Express proxy for live Pikalytics data and AI coaching. Team data stays in localStorage (schema v3), while the server handles CORS, rate limits, Hugging Face credentials, Pikalytics parsing, cache fallback, and body validation. CI runs tests and build on every push.",
         highlights: [
-          "Six-step team builder with roster, sets, legality, matchups, coach, and export stages.",
+          "Six-step guided builder with per-step walkthrough help, sticky health summary, and auto-suggested next steps.",
           "Regulation-aware legality checks with explicit pending and unverified states when source data is incomplete.",
-          "Showdown import/export, VGC form-name mapping, and share URLs for compact team payloads.",
-          "Server-side AI route keeps tokens out of the browser and applies timeout, allowlist, and rate-limit protection."
+          "Showdown import/export, VGC form-name mapping, concurrent species resolution on import, and share URLs for compact team payloads.",
+          "Server-side AI route keeps tokens out of the browser and applies timeout, allowlist, proxy-aware IP trust, and rate-limit protection."
         ],
         constraints: [
           "It is a team-building lab, not an official Pokémon legality authority.",
           "Teams are browser-local unless exported or shared through a URL payload.",
-          "Pikalytics data is scraped and cached, so the UI includes fallback and cold-start states."
+          "Pikalytics data is scraped and cached, so the UI includes fallback and cold-start states for the free Render tier."
         ],
         results: [
-          "69 automated tests across legality, Showdown parsing, schema health, API protection, and smoke coverage.",
+          "75 automated tests across legality, Showdown parsing, schema health, API protection, builder workflow, and smoke coverage — with GitHub Actions CI.",
           "A portfolio project that shows product UX, API integration, and careful communication of data uncertainty.",
           "Live frontend on GitHub Pages with the API proxy deployed separately on Render."
         ],
@@ -233,21 +234,21 @@ export default {
     priceMonitor: {
       title: "Facebook Marketplace Price Monitor",
       description:
-        "A local-first Facebook Marketplace deal monitor for Brazil: save keyword and price searches, run a local Playwright worker with your own Facebook browser profile, and review listings, price drops, and worker health in the dashboard.",
+        "A local-first Facebook Marketplace deal monitor for Brazil: save keyword and price searches, run a local Playwright worker with your own Facebook browser profile, and review listings, price drops, and worker health in a bilingual dashboard.",
       outcome:
         "The system keeps Facebook-facing automation on the user's machine, exposes worker heartbeat and session health in the dashboard, and relies on deterministic alert logic for listings, price drops, and deal-quality signals.",
       detail: {
         summary:
-          "Price Monitor is a local automation product: the web dashboard manages saved searches and alerts, while a local worker owns Marketplace scraping, Facebook session state, polling jobs, and health reporting.",
+          "Price Monitor is a local automation product in an npm/Turbo monorepo: the Next.js dashboard manages saved searches and alerts, while a local worker owns Marketplace scraping, Facebook session state, polling jobs, and health reporting.",
         problem:
           "Marketplace monitoring needs a practical boundary around browser sessions, scraping failures, and long-running jobs. This project keeps that boundary local and makes the worker's state visible instead of hiding operational complexity.",
         build:
-          "The app uses Next.js, TypeScript, BullMQ, Playwright, Prisma, local Docker Postgres/Redis, and a persistent .facebook-profile browser directory. The worker scrapes Marketplace, merges GraphQL/embedded JSON/DOM parser results, updates per-search price memory, and records heartbeat/failure summaries for the dashboard.",
+          "The monorepo uses Next.js, TypeScript, BullMQ, Playwright, Prisma, NextAuth (GitHub/Google OAuth), local Docker Postgres/Redis, and a persistent .facebook-profile browser directory. Shared packages handle Zod schemas, price parsing, poll scheduling, and worker health. The UI defaults to pt-BR with English support.",
         highlights: [
           "Local worker keeps Facebook browser/session data on the user's machine.",
           "Worker heartbeat dashboard shows online/stale/offline state, session mode, latest successful scrape, and latest failure type.",
           "Resilient scraper merges GraphQL interception, embedded JSON, and DOM fallback results into one listing model.",
-          "Reliable polling keeps BullMQ deduplication, concurrency 1, manual cooldowns, stale RUNNING recovery, and exponential backoff."
+          "Reliable polling keeps BullMQ deduplication, concurrency 1, manual cooldowns, stale RUNNING recovery, exponential backoff, and localized queue messages."
         ],
         constraints: [
           "The app requires a local worker and a manually maintained Facebook browser session.",
@@ -255,7 +256,7 @@ export default {
           "The dashboard reports worker and session state clearly so scraping failures are visible to the user."
         ],
         results: [
-          "147 automated tests cover parsing, scheduling, cooldowns, price-drop logic, deal-quality signals, localized queue messages, cleanup, auth/ownership guards, and middleware paths.",
+          "152 automated tests cover parsing, scheduling, cooldowns, price-drop logic, deal-quality signals, i18n queue messages, cleanup, auth/ownership guards, and middleware paths.",
           "A clear product boundary: local scraping and local data by default, with dashboard visibility for the parts that can fail.",
           "Brazil-first UX with BRL cents, pt-BR defaults, Marketplace location hints, listing alerts, and English support."
         ],
@@ -264,21 +265,21 @@ export default {
     cryptoMmLab: {
       title: "Crypto Market Making Lab",
       description:
-        "A paper market-making research lab that pulls live CEX order books, simulates quote placement and fills, tracks inventory/PnL, compares CEX vs Uniswap V2 prices, and exposes a FastAPI dashboard.",
+        "A paper market-making research lab that pulls live CEX order books, simulates quote placement and fills, tracks inventory/PnL, compares CEX vs Uniswap V2 prices, benchmarks strategies side-by-side, and exposes a FastAPI dashboard.",
       outcome:
-        "This is closest to my trading-systems work: risk controls, kill switch, stale-data guards, pluggable strategies, backtesting, Prometheus metrics, Grafana dashboards, and tick-level auditability.",
+        "This is closest to my trading-systems work: risk controls, kill switch, stale-data guards, pluggable strategies with comparison metrics, tick-level auditability, Prometheus/Grafana, and backtesting.",
       detail: {
         summary:
-          "Crypto MM Lab is an end-to-end paper trading loop for studying market-making mechanics: fetch public order books, place simulated quotes, process fills, track PnL, scan CEX/DEX differences, and inspect the system through APIs and dashboards.",
+          "Crypto MM Lab is an end-to-end paper trading loop for studying market-making mechanics: fetch public order books, place simulated quotes, process fills, track PnL, scan CEX/DEX differences, compare strategies, and inspect the system through APIs and dashboards.",
         problem:
           "Market-making research needs more than a notebook. You need a repeatable loop, explicit risk controls, observability, audit trails, and backtests that use the same strategy assumptions as the live paper loop.",
         build:
-          "The backend is FastAPI with CCXT market data, SQLAlchemy persistence, strategy modules, a paper broker, Prometheus metrics, Grafana dashboards, Docker Compose, and scripts for live loops or historical replay.",
+          "The backend is FastAPI with CCXT market data, web3.py for Uniswap V2 reserves, SQLAlchemy persistence, strategy modules, a paper broker, Prometheus metrics, Grafana dashboards, Docker Compose, and scripts for live loops, historical replay, or one-command strategy comparison.",
         highlights: [
-          "Shared tick IDs join order books, quotes, fills, positions, PnL, and opportunities for auditability.",
-          "Risk controls include position caps, cumulative cash reservation, stale-tick cancellation, and a kill switch.",
-          "Pluggable strategies cover pure market making, inventory skew, and volatility-adjusted spreads.",
-          "Backtest mode replays SQLite/Postgres snapshots or CSV fixtures with drawdown, fill rate, and Sharpe-like metrics."
+          "Shared tick IDs join order books, quotes, fills, positions, PnL, and opportunities for full audit reconstruction.",
+          "Risk controls include position caps, cumulative cash reservation, stale-tick cancellation, loop backoff, and a kill switch.",
+          "Three pluggable strategies — pure MM, inventory skew, and volatility-adjusted spreads — with side-by-side Sharpe/drawdown/fill-rate comparison.",
+          "Backtest mode replays SQLite/Postgres snapshots or CSV fixtures with the same risk assumptions as the live paper loop."
         ],
         constraints: [
           "The system is paper-only and never places live CEX or on-chain orders.",
@@ -286,7 +287,7 @@ export default {
           "Dashboard and APIs are intentionally unauthenticated for local research, so they should not be exposed publicly without a proxy."
         ],
         results: [
-          "110 automated tests across order book math, fills, PnL, AMM, arbitrage scanning, backtests, API routes, stale-data guards, and loop recovery.",
+          "116 automated tests across order book math, fills, PnL, AMM, arbitrage scanning, backtests, strategy comparison, API routes, stale-data guards, and loop recovery — around 89% branch coverage.",
           "A research-grade demo of trading-system fundamentals: controls, observability, persistence, and failure handling.",
           "A Docker stack that brings up the app, Prometheus, and Grafana for local monitoring."
         ],
