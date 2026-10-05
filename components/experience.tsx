@@ -5,25 +5,33 @@ import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
 import { useLanguage } from "@/context/language-context";
-import { experienceHighlightKeys, experienceRoleKeys } from "@/lib/data";
+import {
+  experienceHighlightsByRole,
+  experienceRoleKeys,
+} from "@/lib/data";
 import { getInViewRevealProps, useReducedMotion } from "@/lib/motion";
 
+type ExperienceRoleWithHighlights = keyof typeof experienceHighlightsByRole;
+
 function ExperienceHighlights({
+  roleKey,
   reducedMotion,
   animationOffset,
 }: {
+  roleKey: ExperienceRoleWithHighlights;
   reducedMotion: boolean;
   animationOffset: number;
 }) {
   const { t, tList } = useLanguage();
+  const highlightKeys = experienceHighlightsByRole[roleKey];
 
   return (
     <div className="mt-6 border-t border-black/10 pt-6 dark:border-white/10">
       <h4 className="mb-4 text-base font-semibold">
-        {t("experience.roles.funttastic.highlightsTitle")}
+        {t(`experience.roles.${roleKey}.highlightsTitle`)}
       </h4>
       <div className="grid gap-4">
-        {experienceHighlightKeys.map((highlightKey, index) => (
+        {highlightKeys.map((highlightKey, index) => (
           <motion.div
             key={highlightKey}
             className="rounded-xl border border-black/5 bg-white p-5 text-left dark:border-white/10 dark:bg-white/5 sm:p-6"
@@ -55,8 +63,14 @@ function ExperienceHighlights({
   );
 }
 
+function hasExperienceHighlights(
+  roleKey: (typeof experienceRoleKeys)[number]
+): roleKey is ExperienceRoleWithHighlights {
+  return roleKey in experienceHighlightsByRole;
+}
+
 export default function Experience() {
-  const { t, tList } = useLanguage();
+  const { t } = useLanguage();
   const reducedMotion = useReducedMotion();
   const { ref } = useSectionInView("experience");
 
@@ -92,8 +106,9 @@ export default function Experience() {
               {t(`experience.roles.${roleKey}.description`)}
             </p>
 
-            {roleKey === "funttastic" && (
+            {hasExperienceHighlights(roleKey) && (
               <ExperienceHighlights
+                roleKey={roleKey}
                 reducedMotion={reducedMotion}
                 animationOffset={(index + 1) * 0.1}
               />

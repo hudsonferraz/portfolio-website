@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cv:pdf": "node cv/render-pdfs.js"
   },
   "dependencies": {
     "@react-email/body": "0.0.4",

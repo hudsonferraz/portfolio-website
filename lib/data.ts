@@ -30,17 +30,22 @@ export const linkKeys = [
   },
 ] as const;
 
-export const experienceRoleKeys = ["funttastic", "education"] as const;
+export const experienceRoleKeys = ["runibi", "funttastic", "education"] as const;
 
-export const experienceHighlightKeys = [
-  "hummingbot",
-  "rujira",
-  "barracuda",
-] as const;
+export const experienceHighlightsByRole = {
+  runibi: [
+    "simasGame",
+    "mobileHardening",
+    "crashDiagnostics",
+    "platformFoundation",
+  ],
+  funttastic: ["hummingbot", "rujira", "barracuda"],
+} as const;
 
 export const skillCategoryKeys = [
   "languages",
   "trading",
+  "simulation",
   "blockchain",
   "frontend",
   "infrastructure",

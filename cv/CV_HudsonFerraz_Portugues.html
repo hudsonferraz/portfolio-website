@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hudson Ferraz — CV (Português)</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 11mm 12mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+        font-size: 10.2pt;
+        line-height: 1.28;
+        color: #111;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        width: 100%;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20pt;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        line-height: 1.1;
+      }
+
+      .contact {
+        margin-top: 3px;
+        font-size: 9.2pt;
+        color: #222;
+      }
+
+      .contact a {
+        color: #111;
+        text-decoration: none;
+      }
+
+      .role-title {
+        margin: 8px 0 0;
+        font-size: 11.5pt;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 9px 0 3px;
+        font-size: 10.5pt;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #222;
+        padding-bottom: 1px;
+      }
+
+      p {
+        margin: 0 0 4px;
+      }
+
+      .about {
+        text-align: justify;
+      }
+
+      ul.plain {
+        margin: 0;
+        padding-left: 14px;
+      }
+
+      ul.plain li {
+        margin: 0 0 1px;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 5px;
+        font-weight: 700;
+      }
+
+      .job-date {
+        white-space: nowrap;
+        font-weight: 700;
+      }
+
+      .job-summary {
+        margin: 2px 0 3px;
+        text-align: justify;
+      }
+
+      ul.bullets {
+        margin: 0;
+        padding-left: 14px;
+      }
+
+      ul.bullets li {
+        margin: 0 0 3px;
+        text-align: justify;
+      }
+
+      ul.bullets li strong {
+        font-weight: 700;
+      }
+
+      .metrics {
+        margin: 2px 0 0;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Hudson Ferraz Oliveira</h1>
+      <p class="contact">
+        Montes Claros/MG | (38) 99858-7156 |
+        <a href="mailto:hudsonferrazmoc@gmail.com">hudsonferrazmoc@gmail.com</a>
+        |
+        <a href="https://www.linkedin.com/in/hudson-ferraz/"
+          >linkedin.com/in/hudson-ferraz</a
+        >
+        |
+        <a href="https://github.com/hudsonferraz">github.com/hudsonferraz</a>
+      </p>
+
+      <p class="role-title">Desenvolvedor Full-Stack</p>
+
+      <h2>Sobre Mim</h2>
+      <p class="about">
+        Desenvolvedor full-stack especializado em simulação robótica no browser
+        e sistemas de high-frequency trading. Entrego sistemas de produção sob
+        restrições difíceis de plataforma (física em WebAssembly, inferência de
+        redes neurais, browsers mobile) e integrações com exchanges para bots de
+        longa duração. Forte em TypeScript e Python, com foco em automação
+        confiável, observabilidade clara e código sustentável.
+      </p>
+
+      <h2>Formação Acadêmica e Desenvolvimento Pessoal</h2>
+      <ul class="plain">
+        <li>
+          Sistemas de Informação | UFVJM – Diamantina, MG | 2014 – Incompleto
+        </li>
+        <li>Inglês Fluente | Official EF SET Certificate (C2 Proficient)</li>
+        <li>
+          Portfólio |
+          <a href="https://hudson-portfolio-website.vercel.app"
+            >hudson-portfolio-website.vercel.app</a
+          >
+        </li>
+      </ul>
+
+      <h2>Experiência Profissional</h2>
+
+      <div class="job-header">
+        <span>Desenvolvedor Full-Stack | Runibi (runibiLABS)</span>
+        <span class="job-date">Jul 2026 - Set 2026</span>
+      </div>
+      <p class="job-summary">
+        Construí uma plataforma de simulação robótica no browser onde usuários
+        treinam humanoides por missões em jogo. Física MuJoCo em tempo real
+        (WebAssembly) e políticas de controle por rede neural ONNX rodam
+        inteiramente no cliente, em desktop e mobile.
+      </p>
+      <ul class="bullets">
+        <li>
+          <strong>Jogo SimAs MuJoCo:</strong> jogo React/TypeScript com
+          Three.js/React Three Fiber controlando um Unitree G1 via física
+          mujoco-js e inferência ONNX Runtime Web. Worldmap 3D para seleção de
+          missões, diálogo com NPCs e cortes cinemáticos, sequência final e
+          controles touch (D-pad contínuo com snap assist).
+        </li>
+        <li>
+          <strong>Endurecimento mobile e iOS/WebKit:</strong> física WASM +
+          inferência neural confiáveis no iPhone/Android. Correção de crashes
+          OOM entre missões, COOP/COEP para SharedArrayBuffer em iframes,
+          limites de threading do WebKit, envenenamento de cache WASM no
+          Cloudflare, e sessões longas mais estáveis (lazy loading, materiais
+          leves, catch-up de física, pausa com aba oculta).
+        </li>
+        <li>
+          <strong>Diagnóstico de crashes e plataforma:</strong> telemetria de
+          crash no cliente com breadcrumbs, death reports write-ahead que
+          sobrevivem ao kill da aba, pipeline no Supabase e console opt-in
+          <code>?debug=1</code>. Monorepo Bun, backend FastAPI, auth Supabase e
+          deploy Cloudflare Pages.
+        </li>
+      </ul>
+      <p class="metrics">
+        <strong>Impacto:</strong> download do modelo do robô ~58% menor (74→31
+        MB, OBJ→STL sem perda); física 200 Hz + controle NN 50 Hz no browser;
+        50% menos trabalho de física no pior caso (100→50 ms); downloads
+        paralelos no mobile 8→3 (fix OOM); JS da GamePage −60% / código do app
+        −20% gzip via lazy loading; ~1.450 testes verdes; 6 missões + finale.
+      </p>
+
+      <div class="job-header">
+        <span>Desenvolvedor Full-Stack | Funttastic Company</span>
+        <span class="job-date">Jan 2024 - Jun 2026</span>
+      </div>
+      <p class="job-summary">
+        Contribuição para plataformas de HFT e market making: integrações com
+        exchanges, algoritmos de liquidez, observabilidade e infraestrutura
+        distribuída em múltiplas blockchains.
+      </p>
+      <ul class="bullets">
+        <li>
+          <strong>Contribuições Open Source Hummingbot:</strong> conectores
+          customizados CLOB/AMM, melhorando comunicação multi-exchange e
+          confiabilidade de sistemas distribuídos de trading.
+        </li>
+        <li>
+          <strong>Bot HFT Rujira:</strong> bot completo para Rujira Trade (FIN)
+          com motores adaptativos de spread/skew, GraphQL + Cosmos SDK, gestão
+          segura de carteiras e monitoramento de P&amp;L em tempo real.
+        </li>
+        <li>
+          <strong>Plataforma HFT “Barracuda”:</strong> sistema TypeScript/Bun
+          para market making com adaptadores Raydium/Rujira/CCXT, lógica de
+          segurança CLMM, logging estruturado, alertas Telegram e validação em
+          servidores dedicados.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

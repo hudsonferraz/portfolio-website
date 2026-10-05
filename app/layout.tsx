@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     "Full-Stack Developer",
     "TypeScript",
     "Python",
+    "Robotics Simulation",
+    "WebAssembly",
     "High-Frequency Trading",
     "Market Making",
     "React",

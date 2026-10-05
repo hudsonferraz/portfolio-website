@@ -19,7 +19,7 @@ export default {
     role: "I'm a",
     roleBold: "full-stack developer",
     passion: "specializing in",
-    passionItalic: "high-frequency trading & market-making",
+    passionItalic: "browser robotics simulation & trading systems",
     focus: "with a focus on",
     focusTech: "TypeScript, Python & production systems",
     contactButton: "Contact me",
@@ -28,21 +28,29 @@ export default {
   about: {
     title: "About Me",
     description:
-      "I design and operate exchange integrations (CLOB and AMM), strategy engines, and production infrastructure for long-running trading bots. I care about reliable automation, clear observability, and maintainable code that supports both research (backtesting) and live trading.",
+      "I build production full-stack systems where performance and reliability matter under real constraints: browser-side robotics simulation with WebAssembly physics and neural-network control, and exchange integrations for long-running trading bots. I care about clear observability, maintainable architecture, and shipping through hard platform limits.",
     description2:
-      "I studied Information Systems at UFVJM (Diamantina, MG). I got into programming through game bots and kept learning on my own. Today I work at Funttastic on HFT and market-making platforms, building exchange connectors, liquidity engines, and distributed infrastructure across multiple blockchains.",
+      "I studied Information Systems at UFVJM (Diamantina, MG). I got into programming through game bots and kept learning on my own. Most recently I worked at Runibi (runibiLABS) on a client-side humanoid robotics simulation platform (Jul–Sep 2026), after building HFT and market-making systems at Funttastic across multiple blockchains (Jan 2024–Jun 2026).",
     englishNote:
       "Fluent in English (EF SET C2 Proficient). Comfortable collaborating with international teams in English.",
   },
   experience: {
     title: "Experience",
     roles: {
+      runibi: {
+        title: "Full-Stack Developer",
+        company: "Runibi (runibiLABS) - Remote",
+        date: "Jul 2026 - Sep 2026",
+        description:
+          "Built a browser-based robotics simulation platform where users train humanoid robots through game missions. Real-time MuJoCo physics (WebAssembly) and ONNX neural-network control policies run entirely on the client, on desktop and mobile.",
+        highlightsTitle: "Selected technical work",
+      },
       funttastic: {
         title: "Full-Stack Developer",
         company: "Funttastic - Remote",
-        date: "2024 - Present",
+        date: "Jan 2024 - Jun 2026",
         description:
-          "I contribute to high-frequency trading and market-making platforms, integrating exchanges, liquidity provisioning algorithms, and distributed infrastructure across multiple blockchains.",
+          "Contributed to high-frequency trading and market-making platforms, integrating exchanges, liquidity provisioning algorithms, and distributed infrastructure across multiple blockchains.",
         highlightsTitle: "Selected technical work",
       },
       education: {
@@ -54,6 +62,30 @@ export default {
       },
     },
     highlights: {
+      simasGame: {
+        title: "SimAs MuJoCo game (mission curriculum)",
+        description:
+          "Developed a React/TypeScript game with Three.js/React Three Fiber, driving a humanoid (Unitree G1) with in-browser physics (mujoco-js) and ONNX Runtime Web policy inference. Built a 3D Worldmap for mission selection, NPC dialogue with cinematic camera cuts, a finale sequence, and mobile touch controls with continuous D-pad snap assist.",
+        tags: ["React", "TypeScript", "Three.js", "MuJoCo", "ONNX"],
+      },
+      mobileHardening: {
+        title: "Mobile & iOS/WebKit hardening",
+        description:
+          "Made WASM physics plus neural inference run reliably on iPhone and Android. Fixed OOM crashes between missions, set up cross-origin isolation (COOP/COEP) for SharedArrayBuffer in iframes, handled WebKit threading limits and CDN WASM cache poisoning, and improved long-session performance with lazy code-splitting and a tighter physics catch-up loop.",
+        tags: ["WebAssembly", "WebKit", "COOP/COEP", "Performance"],
+      },
+      crashDiagnostics: {
+        title: "Crash diagnostics & observability",
+        description:
+          "Built client-side crash telemetry: breadcrumbs at ONNX, WebGL, simulation and navigation points, write-ahead death reports that survive tab kills, and a Supabase-backed crash report pipeline. Added an opt-in ?debug=1 in-browser console for diagnosing issues on real devices.",
+        tags: ["Telemetry", "Supabase", "Debugging", "Reliability"],
+      },
+      platformFoundation: {
+        title: "Platform foundation",
+        description:
+          "Set up the Bun monorepo (React/Vite frontends, FastAPI backend with Telegram bot integration), moved authentication to Supabase, deployed on Cloudflare Pages with per-environment configuration, and contributed to the institutional landing page including accessibility and brand guideline alignment.",
+        tags: ["Bun", "FastAPI", "Supabase", "Cloudflare"],
+      },
       hummingbot: {
         title: "Hummingbot open-source connectors",
         description:
@@ -104,10 +136,11 @@ export default {
   skills: {
     title: "Skills",
     subtitle:
-      "Technologies and domains I use to build trading systems and production software.",
+      "Technologies and domains I use to build simulation platforms, trading systems, and production software.",
     categories: {
       languages: "Languages",
       trading: "Trading & automation",
+      simulation: "Simulation & client systems",
       blockchain: "Blockchain & DeFi",
       frontend: "Frontend",
       infrastructure: "Infrastructure & tooling",
@@ -123,15 +156,31 @@ export default {
         "CCXT",
         "Hummingbot",
       ],
+      simulation: [
+        "MuJoCo / mujoco-js",
+        "ONNX Runtime Web",
+        "WebAssembly",
+        "WebGL",
+        "COOP/COEP",
+      ],
       blockchain: ["Cosmos SDK", "GraphQL", "CLOB", "AMM", "web3.py"],
-      frontend: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      frontend: [
+        "React",
+        "Next.js",
+        "Three.js",
+        "React Three Fiber",
+        "Tailwind CSS",
+        "Framer Motion",
+      ],
       infrastructure: [
-        "Git",
+        "Bun",
+        "Vite",
+        "Cloudflare Pages",
+        "Supabase",
         "Docker",
-        "Playwright",
-        "BullMQ",
+        "FastAPI",
+        "Git",
         "Prometheus",
-        "Node.js",
       ],
       data: ["PostgreSQL", "Prisma", "Redis", "REST APIs"],
     },
@@ -162,7 +211,7 @@ export default {
   },
   footer: {
     tagline:
-      "Full-stack developer building trading systems, exchange integrations, and production infrastructure.",
+      "Full-stack developer building browser robotics simulation, trading systems, and production infrastructure.",
     location: "Brazil - Remote",
     copyright: "All rights reserved.",
     stackNote:
