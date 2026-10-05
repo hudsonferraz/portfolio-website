@@ -338,7 +338,7 @@ export default {
         results: [
           "Automated tests and CI covering order book math, fills, PnL, AMM, arbitrage scanning, backtests, strategy comparison, research APIs, operator auth, stale-data guards, and loop recovery — with a high branch-coverage gate.",
           "A research-grade demo of trading-system fundamentals: controls, observability, persistence, and failure handling.",
-          "A Docker stack that brings up the app, Prometheus, and Grafana for local monitoring, with deploy notes for a hosted paper demo."
+          "Live paper demo on Render with a product dashboard (PAPER banner, Live / Opportunities / Research), plus a Docker stack for local Prometheus/Grafana."
         ],
       },
     },

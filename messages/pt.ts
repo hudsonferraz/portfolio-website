@@ -339,7 +339,7 @@ export default {
         results: [
           "Testes automatizados e CI cobrindo matemática de order book, fills, PnL, AMM, scanner de arbitragem, backtests, comparação de estratégias, APIs de research, auth de operador, proteção contra dados stale e recuperação do loop — com gate alto de cobertura.",
           "Uma demo de fundamentos de sistemas de trading: controles, observabilidade, persistência e tratamento de falhas.",
-          "Uma stack Docker com app, Prometheus e Grafana, mais notas de deploy para um demo paper hospedado."
+          "Demo paper ao vivo na Render com dashboard de produto (banner PAPER, Live / Opportunities / Research), além da stack Docker local com Prometheus/Grafana."
         ],
       },
     },
