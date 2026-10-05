@@ -121,10 +121,11 @@ export const projectsData = [
       "Prometheus",
       "Docker",
     ],
-    metrics: ["116 tests", "3 strategies", "~89% coverage"],
+    metrics: ["CI + coverage", "3 strategies", "paper MM lab"],
     imageUrl: cryptoMmLab,
     links: {
       source: "https://github.com/hudsonferraz/crypto-mm-lab",
+      // demo: "https://YOUR-HOSTED-DEMO",
     },
   },
 ] as const;

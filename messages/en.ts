@@ -314,31 +314,31 @@ export default {
     cryptoMmLab: {
       title: "Crypto Market Making Lab",
       description:
-        "A paper market-making research lab that pulls live CEX order books, simulates quote placement and fills, tracks inventory/PnL, compares CEX vs Uniswap V2 prices, benchmarks strategies side-by-side, and exposes a FastAPI dashboard.",
+        "A paper market-making research lab that pulls live CEX order books, simulates quote placement and fills, tracks inventory/PnL, compares CEX vs Uniswap V2 prices, benchmarks strategies in a Research tab, and exposes a FastAPI product dashboard.",
       outcome:
-        "This is closest to my trading-systems work: risk controls, kill switch, stale-data guards, pluggable strategies with comparison metrics, tick-level auditability, Prometheus/Grafana, and backtesting.",
+        "This is closest to my trading-systems work: risk controls, kill switch, stale-data guards, pluggable strategies with comparison metrics, tick-level auditability, Prometheus/Grafana, and backtesting — framed as an honest paper lab, not a profit bot.",
       detail: {
         summary:
-          "Crypto MM Lab is an end-to-end paper trading loop for studying market-making mechanics: fetch public order books, place simulated quotes, process fills, track PnL, scan CEX/DEX differences, compare strategies, and inspect the system through APIs and dashboards.",
+          "Crypto MM Lab is an end-to-end paper trading loop for studying market-making mechanics: fetch public order books, place simulated quotes, process fills, track PnL, scan CEX/DEX differences, compare strategies, run scenario sweeps, and inspect the system through APIs and a tabbed dashboard.",
         problem:
-          "Market-making research needs more than a notebook. You need a repeatable loop, explicit risk controls, observability, audit trails, and backtests that use the same strategy assumptions as the live paper loop.",
+          "Market-making research needs more than a notebook. You need a repeatable loop, explicit risk controls, observability, audit trails, and backtests that use the same strategy assumptions as the live paper loop — plus a UI that does not pretend the system is live trading.",
         build:
-          "The backend is FastAPI with CCXT market data, web3.py for Uniswap V2 reserves, SQLAlchemy persistence, strategy modules, a paper broker, Prometheus metrics, Grafana dashboards, Docker Compose, and scripts for live loops, historical replay, or one-command strategy comparison.",
+          "The backend is FastAPI with CCXT market data (poll default, optional websocket with fallback), web3.py for Uniswap V2 reserves, SQLAlchemy persistence, strategy modules, a paper broker with multiple fill modes, Prometheus metrics, Grafana dashboards, Docker Compose, and Research APIs for fixture compare/sweep.",
         highlights: [
+          "Product dashboard with PAPER banner, config chips, Live / Opportunities / Research tabs, open quotes, and kill-switch confirmation.",
           "Shared tick IDs join order books, quotes, fills, positions, PnL, and opportunities for full audit reconstruction.",
-          "Risk controls include position caps, cumulative cash reservation, stale-tick cancellation, loop backoff, and a kill switch.",
-          "Three pluggable strategies — pure MM, inventory skew, and volatility-adjusted spreads — with side-by-side Sharpe/drawdown/fill-rate comparison.",
-          "Backtest mode replays SQLite/Postgres snapshots or CSV fixtures with the same risk assumptions as the live paper loop."
+          "Risk controls include position caps, cumulative cash reservation, stale-tick cancellation, loop backoff, and an optional operator-token kill switch for hosted demos.",
+          "Three pluggable strategies plus fixture comparison and parameter sweeps; toy latency/probability fills are labeled as simulations."
         ],
         constraints: [
           "The system is paper-only and never places live CEX or on-chain orders.",
-          "Execution is simulated with conservative fill modes and no queue-position or latency model.",
-          "Dashboard and APIs are intentionally unauthenticated for local research, so they should not be exposed publicly without a proxy."
+          "Execution is simulated (including an explicit toy latency/probability mode) and is not exchange matching-engine fidelity.",
+          "Public demos should set OPERATOR_API_TOKEN so mutating kill-switch routes are not open to the world."
         ],
         results: [
-          "116 automated tests across order book math, fills, PnL, AMM, arbitrage scanning, backtests, strategy comparison, API routes, stale-data guards, and loop recovery — around 89% branch coverage.",
+          "Automated tests and CI covering order book math, fills, PnL, AMM, arbitrage scanning, backtests, strategy comparison, research APIs, operator auth, stale-data guards, and loop recovery — with a high branch-coverage gate.",
           "A research-grade demo of trading-system fundamentals: controls, observability, persistence, and failure handling.",
-          "A Docker stack that brings up the app, Prometheus, and Grafana for local monitoring."
+          "A Docker stack that brings up the app, Prometheus, and Grafana for local monitoring, with deploy notes for a hosted paper demo."
         ],
       },
     },
