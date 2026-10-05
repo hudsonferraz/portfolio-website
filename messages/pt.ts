@@ -253,29 +253,29 @@ export default {
     vgcTeamLab: {
       title: "VGC Team Lab",
       description:
-        "Um team builder full-stack para Pokémon competitivo em doubles, com meta ao vivo da Pikalytics, checagens de legalidade por regulamento, import/export do Showdown, fluxo guiado em seis etapas e coaching por IA em rota protegida.",
+        "Um team builder full-stack para Pokémon competitivo em doubles, com meta ao vivo da Pikalytics, checagens de legalidade por regulamento, import/export do Showdown, fluxo guiado em quatro etapas e coaching por IA via Groq em rota protegida.",
       outcome:
-        "O diferencial é a UX honesta ao lidar com dados imperfeitos de regras: onboarding guiado, meta fallback, estados pendentes de learnset, avisos de formatos não verificados, CI e storage local sem conta.",
+        "O diferencial é a UX honesta ao lidar com dados imperfeitos de regras: onboarding guiado, meta offline rotulada, estados pendentes de learnset, bans curados de Champions com disclaimer não oficial, CI e storage local sem conta com backup da biblioteca.",
       detail: {
         summary:
-          "VGC Team Lab transforma montagem de times competitivos em um fluxo guiado: montar roster, aplicar sets do meta, inspecionar legalidade, revisar cobertura de matchups, pedir coaching e exportar o resultado para Pokémon Showdown. O formato padrão é Pokémon Champions Reg M-A.",
+          "VGC Team Lab transforma montagem de times competitivos em um fluxo guiado: montar roster, checar legalidade, ajustar matchups, pedir coaching opcional e compartilhar ou exportar para o Pokémon Showdown. O formato padrão é Pokémon Champions Reg M-C.",
         problem:
           "Ferramentas de VGC precisam lidar com formatos que mudam rápido, dados parciais e fluxos de jogador que alternam entre estatísticas de uso, legalidade e pastes do Showdown. O objetivo foi deixar essas transições coerentes sem fingir que o app é uma autoridade oficial de torneio.",
         build:
-          "O app é uma SPA em React com um proxy Express para dados ao vivo da Pikalytics e coaching por IA. Os times ficam em localStorage (schema v3), enquanto o servidor cuida de CORS, rate limits, credenciais da Hugging Face, parsing da Pikalytics, cache fallback e validação de payload. O CI roda testes e build a cada push.",
+          "O app é uma SPA em React com um proxy Express para dados ao vivo da Pikalytics e coaching por IA. Os times ficam em localStorage (schema v3) com backup/restore JSON da biblioteca, enquanto o servidor cuida de CORS, rate limits, credenciais da Groq, parsing da Pikalytics, cache fallback e validação de payload. O CI roda testes e build a cada push.",
         highlights: [
-          "Team builder guiado em seis etapas com ajuda por passo, resumo de saúde sticky e sugestão automática do próximo passo.",
-          "Checagens de legalidade por regulamento com estados pendentes e avisos explícitos quando a fonte está incompleta.",
-          "Import/export do Showdown, mapeamento de nomes de formas VGC, resolução concorrente de espécies no import e links compartilháveis para payloads compactos.",
-          "Rota de IA no servidor mantém tokens fora do navegador e aplica timeout, allowlist, confiança de IP via proxy e rate limit."
+          "Team builder guiado em quatro etapas (Build → Check → Tune → Share) com Team report sticky, completude de set nos slots e roster usável no mobile.",
+          "Legalidade de Champions Reg M-C com lista curada de Legendary / Mythical / Paradox, e avisos claros quando outros formatos ainda estão incompletos.",
+          "Import/export do Showdown, mapeamento de formas VGC, links compartilháveis com toasts de falha e backup baixável de todos os times.",
+          "Coach Groq no servidor mantém tokens fora do navegador e aplica timeout, allowlist, confiança de IP via proxy e rate limit."
         ],
         constraints: [
           "É um laboratório de team building, não uma autoridade oficial de legalidade Pokémon.",
-          "Os times ficam locais no navegador, exceto quando exportados ou compartilhados por URL.",
-          "Dados da Pikalytics são lidos e cacheados, então a UI mostra fallback e estados de cold start do tier gratuito do Render."
+          "Os times ficam locais no navegador, exceto quando exportados, compartilhados por URL ou restaurados de um backup.",
+          "Dados da Pikalytics são lidos e cacheados, então a UI mostra fallback rotulado e estados de cold start do tier gratuito do Render."
         ],
         results: [
-          "75 testes automatizados cobrindo legalidade, parsing Showdown, saúde de schema, proteção de API, fluxo do builder e smoke tests — com CI no GitHub Actions.",
+          "Testes automatizados cobrindo legalidade, parsing Showdown, saúde de schema, proteção de API, fluxo do builder, clipboard/backup e smoke tests — com CI no GitHub Actions.",
           "Um projeto de portfólio que mostra UX de produto, integração de APIs e comunicação cuidadosa de incerteza de dados.",
           "Frontend no GitHub Pages com proxy de API implantado separadamente no Render."
         ],
